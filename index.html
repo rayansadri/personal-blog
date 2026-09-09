@@ -1305,6 +1305,22 @@
         border-top: 1px solid var(--line);
       }
 
+      .city-footer-shell {
+        margin: 14px 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #f5f6f2;
+      }
+
+      .city-footer-frame {
+        display: block;
+        width: 100%;
+        height: clamp(255px, 31vw, 365px);
+        border: 0;
+        background: transparent;
+      }
+
       .connect p {
         margin: 0 0 14px;
         font-size: 16px;
@@ -1320,6 +1336,10 @@
         font-size: 13px;
       }
 
+      html[data-theme="dark"] .city-footer-shell {
+        background: #090d15;
+      }
+
       @media (max-width: 720px) {
         .page {
           width: min(100% - 28px, 690px);
@@ -1333,6 +1353,10 @@
 
         .nav {
           justify-content: flex-start;
+        }
+
+        .city-footer-frame {
+          height: 275px;
         }
 
         .stats {
@@ -1879,6 +1903,15 @@
 
       <footer class="connect" id="contact">
         <span class="label">Connect</span>
+        <div class="city-footer-shell">
+          <iframe
+            class="city-footer-frame"
+            src="assets/toronto-footer.html"
+            title="Interactive city footer"
+            loading="lazy"
+            scrolling="no"
+          ></iframe>
+        </div>
         <p>I'm open to founder-to-founder chats, AI product work, GTM systems, and technical partnerships.</p>
         <div class="links">
           <a href="https://calendly.com/rynsdri/30min">Book a coffee chat</a>
@@ -1905,13 +1938,25 @@
         if (themeLabel) themeLabel.textContent = dark ? "Day" : "Night";
       }
 
+      function syncCityFooterTheme() {
+        const frame = document.querySelector(".city-footer-frame");
+        frame?.contentWindow?.postMessage({
+          type: "rayansadri-theme",
+          theme: document.documentElement.dataset.theme
+        }, window.location.origin);
+      }
+
       syncThemeToggle();
+      syncCityFooterTheme();
+
+      document.querySelector(".city-footer-frame")?.addEventListener("load", syncCityFooterTheme);
 
       themeToggle?.addEventListener("click", () => {
         const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = nextTheme;
         localStorage.setItem("theme", nextTheme);
         syncThemeToggle();
+        syncCityFooterTheme();
       });
 
       let clickAudio;
