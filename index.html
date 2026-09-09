@@ -1306,17 +1306,64 @@
       }
 
       .city-footer-shell {
+        position: relative;
         margin: 14px 0 18px;
+        padding: 16px;
         border: 1px solid var(--line);
         border-radius: 18px;
         overflow: hidden;
         background: #f5f6f2;
       }
 
+      .city-footer-status {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-bottom: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .city-footer-status span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.58);
+        padding: 7px 10px 6px;
+      }
+
+      .city-mix-stage {
+        position: relative;
+        min-height: clamp(340px, 48vw, 392px);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(245, 246, 242, 0.98), rgba(245, 246, 242, 0.58) 48%, rgba(245, 246, 242, 0.98)),
+          #eef1e8;
+      }
+
+      .city-pane {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 58%;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      .city-pane-toronto {
+        clip-path: polygon(0 0, 94% 0, 78% 100%, 0 100%);
+      }
+
+      .city-mix-stage-single .city-pane {
+        width: 100%;
+        clip-path: none;
+      }
+
       .city-footer-frame {
         display: block;
         width: 100%;
-        height: clamp(255px, 31vw, 365px);
+        height: 100%;
         border: 0;
         background: transparent;
       }
@@ -1340,6 +1387,14 @@
         background: #090d15;
       }
 
+      html[data-theme="dark"] .city-mix-stage {
+        background: #101622;
+      }
+
+      html[data-theme="dark"] .city-footer-status span {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
       @media (max-width: 720px) {
         .page {
           width: min(100% - 28px, 690px);
@@ -1355,8 +1410,23 @@
           justify-content: flex-start;
         }
 
-        .city-footer-frame {
-          height: 275px;
+        .city-footer-shell {
+          padding: 14px;
+        }
+
+        .city-footer-status {
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+
+        .city-mix-stage {
+          min-height: 360px;
+        }
+
+        .city-pane {
+          width: 100%;
+          height: 100%;
+          clip-path: none;
         }
 
         .stats {
@@ -1902,15 +1972,23 @@
       </section>
 
       <footer class="connect" id="contact">
-        <span class="label">Connect</span>
+        <span class="label">Where to find me</span>
         <div class="city-footer-shell">
-          <iframe
-            class="city-footer-frame"
-            src="assets/toronto-footer.html"
-            title="Interactive city footer"
-            loading="lazy"
-            scrolling="no"
-          ></iframe>
+          <div class="city-footer-status" aria-live="polite">
+            <span data-local-time>ET --:--</span>
+            <span data-local-weather>weather loading</span>
+          </div>
+          <div class="city-mix-stage city-mix-stage-single" aria-label="Toronto city scene">
+            <div class="city-pane city-pane-toronto">
+              <iframe
+                class="city-footer-frame"
+                src="assets/toronto-footer.html?v=footer-originalish-1"
+                title="Toronto footer scene"
+                loading="lazy"
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
         </div>
         <p>I'm open to founder-to-founder chats, AI product work, GTM systems, and technical partnerships.</p>
         <div class="links">
@@ -1939,17 +2017,62 @@
       }
 
       function syncCityFooterTheme() {
-        const frame = document.querySelector(".city-footer-frame");
-        frame?.contentWindow?.postMessage({
-          type: "rayansadri-theme",
-          theme: document.documentElement.dataset.theme
-        }, window.location.origin);
+        document.querySelectorAll(".city-footer-frame").forEach((frame) => {
+          frame.contentWindow?.postMessage({
+            type: "rayansadri-theme",
+            theme: document.documentElement.dataset.theme
+          }, window.location.origin);
+        });
+      }
+
+      function updateLocalTime() {
+        const target = document.querySelector("[data-local-time]");
+        if (!target) return;
+
+        const time = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Toronto",
+          hour: "numeric",
+          minute: "2-digit"
+        }).format(new Date());
+
+        target.textContent = `${time} ET`;
+      }
+
+      function weatherLabel(code) {
+        if ([0, 1].includes(code)) return "clear";
+        if ([2, 3].includes(code)) return "cloudy";
+        if ([45, 48].includes(code)) return "fog";
+        if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "rain";
+        if ([71, 73, 75, 77, 85, 86].includes(code)) return "snow";
+        if ([95, 96, 99].includes(code)) return "storm";
+        return "weather";
+      }
+
+      async function updateLocalWeather() {
+        const target = document.querySelector("[data-local-weather]");
+        if (!target) return;
+
+        try {
+          const url = "https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current=temperature_2m,weather_code&temperature_unit=fahrenheit";
+          const response = await fetch(url, { cache: "no-store" });
+          if (!response.ok) throw new Error("weather unavailable");
+          const data = await response.json();
+          const temp = Math.round(data.current.temperature_2m);
+          target.textContent = `Toronto ${temp}°F, ${weatherLabel(data.current.weather_code)}`;
+        } catch (error) {
+          target.textContent = "weather unavailable";
+        }
       }
 
       syncThemeToggle();
       syncCityFooterTheme();
+      updateLocalTime();
+      updateLocalWeather();
+      setInterval(updateLocalTime, 30000);
 
-      document.querySelector(".city-footer-frame")?.addEventListener("load", syncCityFooterTheme);
+      document.querySelectorAll(".city-footer-frame").forEach((frame) => {
+        frame.addEventListener("load", syncCityFooterTheme);
+      });
 
       themeToggle?.addEventListener("click", () => {
         const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
