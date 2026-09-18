@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* Theme is resolved to an explicit data-theme on <html> by a tiny inline script
+   (see layout.tsx), so "system" never needs duplicated CSS. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light;
+
+  /* Canvas & surfaces: iOS-style grouped background with white cards */
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #f2f2f4;
+  --surface-3: #e8e8ec;
+  --line: #e6e6ea;
+  --line-strong: #d2d2d7;
+
+  /* Ink */
+  --ink: #0a0a0c;
+  --ink-inverse: #ffffff;
+  --ink-secondary: #55555e;
+  --ink-muted: #86868b;
+  --ink-faint: #c7c7cc;
+
+  /* Accent + status (Apple system tints, tuned for text contrast) */
+  --accent: #0a6cd8;
+  --accent-soft: #e6f0fc;
+  --positive: #1f8a3b;
+  --positive-soft: #e6f5ea;
+  --negative: #d1201f;
+  --negative-soft: #fdecec;
+  --warning: #b3540a;
+  --warning-soft: #fff3e3;
+
+  /* Chart neutrals */
+  --chart-grid: #ebebef;
+  --chart-axis: #8e8e93;
+  --chart-muted-bar: #d1d1d6;
+  --chart-secondary: #a9c9f2;
+  --chart-cursor: #f2f2f4;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --surface-3: #3a3a3c;
+  --line: #2a2a2d;
+  --line-strong: #3f3f43;
+
+  --ink: #f5f5f7;
+  --ink-inverse: #0a0a0c;
+  --ink-secondary: #a8a8ad;
+  --ink-muted: #8e8e93;
+  --ink-faint: #4a4a4f;
+
+  --accent: #409cff;
+  --accent-soft: rgba(64, 156, 255, 0.16);
+  --positive: #32d74b;
+  --positive-soft: rgba(50, 215, 75, 0.14);
+  --negative: #ff6961;
+  --negative-soft: rgba(255, 105, 97, 0.14);
+  --warning: #ffb340;
+  --warning-soft: rgba(255, 179, 64, 0.14);
+
+  --chart-grid: #2a2a2d;
+  --chart-axis: #8e8e93;
+  --chart-muted-bar: #48484a;
+  --chart-secondary: #2c5a92;
+  --chart-cursor: #2c2c2e;
+
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative: var(--negative);
+  --color-negative-soft: var(--negative-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+
+  /* Categorical chart series (fixed order, validated for CVD separation) */
+  --color-series-1: #2a78d6;
+  --color-series-2: #eb6834;
+  --color-series-3: #1baf7a;
+  --color-series-4: #eda100;
+  --color-series-5: #e87ba4;
+  --color-series-6: #008300;
+  --color-series-7: #4a3aa7;
+  --color-series-8: #e34948;
+
+  --shadow-card: var(--shadow-card);
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* iOS: keep the canvas color behind the notch / home indicator and the
+   translucent status bar; respect safe areas on the fixed bars. */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* iOS Safari zooms into inputs smaller than 16px. Keep them 16px on touch
+   screens; the desktop sizes stay compact. */
+@media (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Installed to the Home Screen: no rubber-band on the shell, native feel. */
+@media (display-mode: standalone) {
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  input,
+  textarea,
+  [contenteditable] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "cv11", "ss01", "ss03";
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Big figures use proportional digits; tables use tabular. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.recharts-surface:focus,
+.recharts-wrapper:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Hide the scrollbar on horizontal rails while keeping them scrollable */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* Native controls follow the theme */
+input[type="date"],
+select {
+  color-scheme: inherit;
+}
+
+@keyframes cardin {
+  from {
+    opacity: 0;
+    transform: translateX(var(--from, 16px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes popin {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-12deg); }
+  45% { transform: rotate(9deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes sheetup {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -6,6 +6,7 @@
   <title>SpendLens — iPhone & Mac</title>
   <style>
     *{box-sizing:border-box}body{margin:0;background:#202022;color:#f0f0f2;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:0}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible{outline:2px solid #b2caff;outline-offset:5px}.showcase{max-width:1000px;margin:auto;padding:23px 20px 17px;min-height:690px}.heading{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:500}.brand img{width:29px;height:29px;border-radius:7px}.edition{font-size:12px;color:#a4a4ab}.switcher{display:flex;justify-content:center;gap:4px;margin:21px auto 0;width:max-content;padding:4px;border:1px solid #424245;border-radius:8px;background:#19191b}.switcher button{font:inherit;font-size:13px;color:#9d9da5;background:none;border:0;border-radius:5px;padding:8px 18px;cursor:pointer}.switcher button[aria-pressed=true]{background:#3e3e42;color:#fff;box-shadow:0 1px 4px #0004}.stage{height:545px;display:grid;place-items:center;position:relative}.device{position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1),border-radius .45s,box-shadow .45s;box-shadow:0 26px 45px #0007,0 0 0 1px #7778;overflow:hidden;background:#080809}.device.iphone{width:278px;height:514px;border:5px solid #414143;border-radius:39px;padding:40px 5px 16px;box-shadow:0 25px 40px #0008,0 0 0 1px #929294,inset 0 0 0 2px #101011}.device.mac{width:100%;max-width:590px;height:435px;border:1px solid #57575b;border-radius:9px;padding-top:33px;box-shadow:0 30px 50px #0008}.device iframe{width:100%;height:100%;border:0;display:block;background:#000}.status{position:absolute;top:12px;left:23px;right:23px;display:flex;justify-content:space-between;font-size:11px;font-weight:600;pointer-events:none}.island{position:absolute;top:7px;left:50%;transform:translateX(-50%);height:23px;width:84px;background:#000;border-radius:20px}.home{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:90px;height:4px;background:#ddd;border-radius:4px}.titlebar{display:none;position:absolute;top:0;left:0;right:0;height:33px;background:#303032;align-items:center;justify-content:center;font-size:11px;color:#bdbdc3;border-bottom:1px solid #444448}.lights{position:absolute;left:12px;display:flex;gap:6px}.lights i{width:8px;height:8px;border-radius:50%;background:#ff6058}.lights i:nth-child(2){background:#febc2e}.lights i:nth-child(3){background:#28c840}.mac .titlebar{display:flex}.mac .status,.mac .island,.mac .home{display:none}.caption{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#99999f}.caption a{color:#b7c7e4;text-decoration:none}.device iframe{animation:reveal .4s ease-out}@keyframes reveal{from{opacity:.4}to{opacity:1}}@media(max-width:380px){.showcase{padding-left:12px;padding-right:12px}.edition{font-size:11px}.device.iphone{width:258px}.device.mac{height:470px}.caption{font-size:10px}.switcher{margin-top:18px}}@media(prefers-reduced-motion:reduce){.device{transition:none}.device iframe{animation:none}}
+    .showcase{min-height:800px}.stage{height:650px}.device.iphone{width:310px;max-width:100%;height:610px}.device.mac{height:520px}.screen{position:absolute;inset:40px 5px 16px;overflow:hidden}.mac .screen{inset:33px 0 0}.screen iframe{transform-origin:top left;max-width:none}.device iframe{animation:none}@media(max-width:380px){.device.iphone{width:278px;height:590px}.device.mac{height:500px}}
   </style>
 </head>
 <body>
@@ -16,20 +17,23 @@
       <div class="device iphone" id="device">
         <div class="status" aria-hidden="true"><span>9:41</span><span>5G ▰</span></div><div class="island" aria-hidden="true"></div>
         <div class="titlebar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span>SpendLens</div>
-        <iframe src="spendlens-demo.html?device=iphone" title="SpendLens app preview"></iframe>
+        <div class="screen"><iframe src="spendlens-app/index.html" title="SpendLens app preview"></iframe></div>
         <div class="home" aria-hidden="true"></div>
       </div>
     </div>
-    <div class="caption"><span>Interactive preview · Fictional data</span><a href="spendlens-demo.html" target="_blank" rel="noopener">Open app preview ↗</a></div>
+    <div class="caption"><span>Interactive app · Fictional data</span><a href="spendlens-app/index.html" target="_blank" rel="noopener">Open full app ↗</a></div>
   </section>
   <script>
     const device=document.getElementById('device');
+    const screen=device.querySelector('.screen');
+    function fitApp(){const frame=screen.querySelector('iframe'),width=device.classList.contains('mac')?960:390,scale=screen.clientWidth/width;frame.style.width=width+'px';frame.style.height=screen.clientHeight/scale+'px';frame.style.transform='scale('+scale+')'}
+    new ResizeObserver(fitApp).observe(screen);fitApp();
     document.querySelectorAll('[data-device]').forEach(button=>button.addEventListener('click',()=>{
       const mode=button.dataset.device;
       device.className='device '+mode;
       document.querySelectorAll('[data-device]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
       const frame=device.querySelector('iframe');
-      frame.contentWindow.postMessage({type:'spendlens-device',device:mode},location.origin);
+      fitApp();
     }));
   </script>
 </body>

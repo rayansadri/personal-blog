@@ -1,0 +1,2 @@
+import {analyzeChanges} from '@/lib/analytics/changes';
+export async function summarizeMonth(txs:any,rules:any,month:string){const c=analyzeChanges(txs,month);return {month,text:c.narrative.slice(0,3).join(' '),source:'deterministic',drivers:c.categories.slice(0,3).map(d=>({label:d.key,delta:d.delta,kind:d.isNew?'appeared':d.disappeared?'disappeared':d.delta>0?'up':'down'})),askQuestion:`Why did I spend ${c.delta>=0?'more':'less'} in ${c.monthLabel}?`}}
