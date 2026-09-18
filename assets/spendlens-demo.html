@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SpendLens — Interactive Preview</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#000;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.5;letter-spacing:0}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #78aaff;outline-offset:4px}header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #242426;gap:12px}header strong{font-weight:600;display:flex;align-items:center;gap:9px}header img{width:25px;height:25px;border-radius:6px}.sample{font-size:12px;color:#aaa}main{max-width:620px;margin:auto;padding:24px 24px 90px}h1{font-size:26px;line-height:1.2;font-weight:600;margin:0 0 24px}h2{font-size:21px;font-weight:550;line-height:1.35;margin:0 0 10px}p{margin:0 0 14px}.muted{color:#a7a7af}.meta{font-size:12px;color:#919199;display:flex;flex-wrap:wrap;gap:8px}.positive{color:#76d6a5}.ask-link{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 0;margin:18px 0;background:none;border:0;border-top:1px solid #29292d;border-bottom:1px solid #29292d;color:#78aaff;text-align:left}.section-title{font-size:14px;font-weight:600;margin:25px 0 14px}.insights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.insights small{font-size:12px;color:#92929b;display:block;margin-bottom:8px}.insights b{font-size:13px;font-weight:500;display:block}.insights span{font-size:13px;color:#76d6a5;display:block;margin-top:5px}.chart{height:112px;display:flex;align-items:end;gap:7px;padding-top:10px}.bar{flex:1;background:#424248;border-radius:3px 3px 0 0;min-width:0;position:relative}.bar:last-child{background:#82aaff}.axis{display:flex;justify-content:space-between;font-size:12px;color:#92929b;margin-top:6px}.activity{list-style:none;padding:0;margin:0}.activity li{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #252528;padding:12px 0;font-size:14px}.activity small{display:block;color:#92929b;font-size:12px}nav{position:sticky;bottom:0;display:flex;justify-content:center;gap:8px;background:#111113f5;border-top:1px solid #29292d;padding:10px}nav button{border:0;background:transparent;color:#9999a2;padding:10px 24px;border-radius:6px;font-size:14px}nav button[aria-selected=true]{color:#91b4ff;background:#222631}[hidden]{display:none!important}.questions{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.questions button{border:1px solid #36363c;border-radius:6px;background:#17171a;color:#c7c7cd;padding:9px 12px;font-size:13px;text-align:left}.questions button[aria-pressed=true]{border-color:#82aaff;color:#a9c3ff;background:#171e2b}.answer{min-height:285px}.answer h2{font-size:19px;margin:25px 0 18px}.answer p{color:#c3c3cb}.comparison{padding:14px 0;border-top:1px solid #29292e;display:flex;justify-content:space-between;gap:14px;font-size:14px}.comparison strong{font-weight:500;color:#fafafa}details{margin-top:20px;font-size:12px;color:#9696a0}summary{cursor:pointer;color:#8fb5ff;padding:8px 0}.enter{animation:appear .28s ease-out}@keyframes appear{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}@media(max-width:380px){main{padding:20px 16px 70px}header{padding:16px}.insights{gap:8px}h1{font-size:23px}.insights b,.insights span{font-size:12px}}@media(prefers-reduced-motion:reduce){.enter{animation:none}}
+  </style>
+</head>
+<body>
+  <header><strong><img src="spendlens-icon.png" alt="">SpendLens</strong><span class="sample">Interactive demo · Sample data</span></header>
+  <main>
+    <section id="overview" role="tabpanel" aria-labelledby="home-tab">
+      <h1>Good morning, Rayan.</h1>
+      <h2>You spent <span class="positive">6% less</span> this month.</h2>
+      <p class="muted">Utilities and entertainment fell. A new $413 travel purchase offset some of those savings.</p>
+      <div class="meta"><span>September 2026</span><span>$3,787 total</span><span>−$231 vs August</span><span>58 purchases</span></div>
+      <button class="ask-link" id="open-ask">Ask about your spending <span aria-hidden="true">↗</span></button>
+      <div class="insights">
+        <div><small>Biggest change</small><b>Utilities</b><span>−$316</span></div>
+        <div><small>Stronger habit</small><b>Weekend spending</b><span>2.1× weekdays</span></div>
+        <div><small>Worth a look</small><b>Travel returned</b><span>+$413</span></div>
+      </div>
+      <h3 class="section-title">Monthly spending</h3>
+      <div class="chart" role="img" aria-label="Monthly sample spending from October through September: 3980, 4210, 4870, 3760, 3690, 3920, 4140, 4020, 4480, 4146, 4018, 3787 dollars.">
+        <div class="bar" style="height:82%"></div><div class="bar" style="height:86%"></div><div class="bar" style="height:100%"></div><div class="bar" style="height:77%"></div><div class="bar" style="height:76%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:83%"></div><div class="bar" style="height:92%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:83%"></div><div class="bar" style="height:78%"></div>
+      </div><div class="axis"><span>Oct</span><span>Jan</span><span>Apr</span><span>Sep</span></div>
+      <h3 class="section-title">Recent activity</h3>
+      <ul class="activity"><li><span>Delta Air Lines<small>Sep 12 · Travel</small></span><span>$412.60</span></li><li><span>Whole Foods<small>Sep 11 · Groceries</small></span><span>$63.18</span></li><li><span>Uber Eats<small>Sep 10 · Delivery</small></span><span>$31.47</span></li></ul>
+    </section>
+    <section id="ask" role="tabpanel" aria-labelledby="ask-tab" hidden>
+      <h1>Ask SpendLens</h1><p class="muted">Your spending, explained.</p>
+      <div class="questions" aria-label="Sample spending questions"><button data-question="august" aria-pressed="true">Why was August expensive?</button><button data-question="weekend" aria-pressed="false">What about weekends?</button><button data-question="attention" aria-pressed="false">What needs my attention?</button></div>
+      <div id="answer" class="answer" aria-live="polite"></div>
+    </section>
+  </main>
+  <nav role="tablist" aria-label="SpendLens views"><button role="tab" id="home-tab" aria-controls="overview" aria-selected="true">Overview</button><button role="tab" id="ask-tab" aria-controls="ask" aria-selected="false" tabindex="-1">Ask SpendLens</button></nav>
+  <script>
+    // Scripted examples from the supplied app's portfolio demo scenarios.
+    const scenarios={
+      august:{title:"Larger purchases, not more purchases.",text:"August spending rose by $1,240 compared with July. Travel and shopping explain most of the increase.",rows:[["August","$5,386"],["July","$4,146"],["Travel change","+$510"],["Shopping change","+$420"],["Dining change","+$190"]],evidence:"August: 61 transactions. July: 63 transactions. Sample comparison from the SpendLens demo dataset."},
+      weekend:{title:"A weekend day costs about twice as much.",text:"Day-to-day spending averages $186 on weekends versus $91 on weekdays. Saturdays carry most of the difference, mainly dining and shopping.",rows:[["Weekend average / day","$186"],["Weekday average / day","$91"],["Saturday average","$214"]],evidence:"Sample period: last three months. Excludes bills. Weekend-to-weekday ratio: 2.04."},
+      attention:{title:"Three things worth a closer look.",text:"Delivery is growing, a phone bill increased, and two identical charges may need a second look.",rows:[["Uber Eats · 17 August orders","$742"],["Verizon · monthly increase","+$19"],["Sweetgreen · possible duplicate","$14.85"]],evidence:"Sample August transactions. Sweetgreen: $14.85 on August 12 and 13. A possible duplicate is a flag to review, not a confirmed error."}
+    };
+    const answer=document.getElementById('answer');
+    function render(key){const s=scenarios[key];answer.replaceChildren();const title=document.createElement('h2');title.textContent=s.title;const p=document.createElement('p');p.textContent=s.text;answer.append(title,p);s.rows.forEach(([label,value])=>{const row=document.createElement('div');row.className='comparison';const l=document.createElement('span');l.textContent=label;const v=document.createElement('strong');v.textContent=value;row.append(l,v);answer.append(row)});const evidence=document.createElement('details');const summary=document.createElement('summary');summary.textContent='View supporting numbers';const text=document.createElement('p');text.textContent=s.evidence;evidence.append(summary,text);answer.append(evidence);answer.classList.remove('enter');void answer.offsetWidth;answer.classList.add('enter');document.querySelectorAll('[data-question]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.question===key)))}
+    function view(id){document.getElementById('overview').hidden=id!=='overview';document.getElementById('ask').hidden=id!=='ask';document.querySelectorAll('[role=tab]').forEach(b=>{const active=b.getAttribute('aria-controls')===id;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1})}
+    document.querySelectorAll('[data-question]').forEach(b=>b.addEventListener('click',()=>render(b.dataset.question)));
+    document.querySelectorAll('[role=tab]').forEach(b=>{b.addEventListener('click',()=>view(b.getAttribute('aria-controls')));b.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const id=e.key==='Home'?'overview':e.key==='End'?'ask':b.id==='home-tab'?'ask':'overview';view(id);document.querySelector('[role=tab][aria-selected=true]').focus()}})});
+    document.getElementById('open-ask').addEventListener('click',()=>{view('ask');document.querySelector('[data-question]').focus()});render('august');
+  </script>
+</body>
+</html>
