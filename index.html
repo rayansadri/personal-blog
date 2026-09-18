@@ -211,8 +211,27 @@
       }
 
       .stat {
-        padding: 13px 16px 14px;
+        padding: 18px 14px 20px;
         border-right: 1px solid var(--line);
+        min-width: 0;
+      }
+
+      .stat::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin-bottom: 14px;
+        background: var(--blue);
+        transition: width 180ms ease;
+      }
+
+      .stat:nth-child(even)::before {
+        background: #de635b;
+      }
+
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        .stat:hover::before { width: 36px; }
       }
 
       .stat:last-child {
@@ -221,8 +240,9 @@
 
       .stat b {
         display: block;
-        margin-bottom: 2px;
-        font-size: 14px;
+        margin-bottom: 8px;
+        min-height: 38px;
+        font-size: 13px;
         line-height: 1.4;
         font-weight: 500;
       }
@@ -230,8 +250,8 @@
       .stat span {
         display: block;
         color: var(--muted);
-        font-size: 13px;
-        line-height: 1.2;
+        font-size: 12px;
+        line-height: 1.6;
       }
 
       .proof-head {
@@ -1509,23 +1529,21 @@
 
       <section class="intro" aria-label="Intro">
         <p>
-          I'm an AI product builder and growth hacker in Toronto and New York.
-          I build consumer apps and enterprise AI, then figure out how to get
-          them into people's hands. Product, GTM, and growth, from code to customers.
+          I build AI products and figure out how to sell them.
+          Consumer apps, enterprise deals, and a lot of experiments in between.
         </p>
         <p>
           Co-founded <a class="pill blue" href="#carez">Carez AI</a>.
           Building <a class="pill green" href="#spendlens">SpendLens</a>.
-          McGill-trained engineer. Usually shipping a product, testing distribution,
-          or automating something that should have been a button.
+          McGill-trained engineer. Based in Toronto and New York.
         </p>
       </section>
 
       <section class="stats" aria-label="What I do">
-        <div class="stat"><b>Product</b><span>Consumer apps</span></div>
-        <div class="stat"><b>GTM</b><span>Launch &amp; sell</span></div>
-        <div class="stat"><b>Growth</b><span>Test &amp; iterate</span></div>
-        <div class="stat"><b>Enterprise AI</b><span>Build &amp; deploy</span></div>
+        <div class="stat"><b>Product Hacker</b><span>Idea to working product</span></div>
+        <div class="stat"><b>AI Builder</b><span>Consumer apps &amp; enterprise</span></div>
+        <div class="stat"><b>GTM Operator</b><span>First users to paying customers</span></div>
+        <div class="stat"><b>Growth Experimenter</b><span>Ship, measure, repeat</span></div>
       </section>
 
       <section class="section" id="work" aria-label="Work">
