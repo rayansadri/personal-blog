@@ -11,8 +11,7 @@
     <script>
       (() => {
         const storedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.dataset.theme = storedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.dataset.theme = storedTheme === "dark" ? "dark" : "light";
       })();
     </script>
     <style>
@@ -1533,8 +1532,7 @@
           Consumer apps, enterprise deals, and a lot of experiments in between.
         </p>
         <p>
-          Co-founded <a class="pill blue" href="#carez">Carez AI</a>.
-          Building <a class="pill green" href="#spendlens">SpendLens</a>.
+          Scaled <a class="pill blue" href="#carez">Carez AI</a>, an AI startup, to $500K ARR.
           McGill-trained engineer. Based in Toronto and New York.
         </p>
       </section>
