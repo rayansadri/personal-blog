@@ -922,6 +922,209 @@
         background: linear-gradient(90deg, #6965db, #a18cff);
       }
 
+      .audit-console {
+        display: grid;
+        gap: 10px;
+        margin-top: 13px;
+      }
+
+      .audit-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(210px, 0.95fr);
+        gap: 10px;
+      }
+
+      .audit-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfbfa;
+        overflow: hidden;
+      }
+
+      .audit-panel-head,
+      .audit-row,
+      .audit-sample,
+      .audit-chip-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .audit-panel-head {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .audit-panel-head b {
+        color: #111;
+        font-weight: 500;
+      }
+
+      .audit-leaderboard {
+        display: grid;
+      }
+
+      .audit-row {
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+      }
+
+      .audit-row:last-child {
+        border-bottom: 0;
+      }
+
+      .audit-row strong {
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .audit-score {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 112px;
+        color: var(--muted);
+      }
+
+      .audit-score i {
+        display: block;
+        width: 62px;
+        height: 7px;
+        border-radius: 999px;
+        background: #ebe9ff;
+        overflow: hidden;
+      }
+
+      .audit-score i::before {
+        content: "";
+        display: block;
+        width: var(--score);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #6965db, #2f67ff);
+      }
+
+      .audit-metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .audit-metric {
+        padding: 10px;
+        border-right: 1px solid var(--line);
+      }
+
+      .audit-metric:last-child {
+        border-right: 0;
+      }
+
+      .audit-metric small,
+      .audit-note small {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .audit-metric b {
+        display: block;
+        color: #111;
+        font-size: 20px;
+        font-weight: 520;
+        letter-spacing: -0.06em;
+      }
+
+      .audit-note {
+        padding: 10px;
+        color: #555;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .audit-heatmap {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 10px;
+      }
+
+      .heatmap-grid {
+        display: grid;
+        grid-template-columns: 42px repeat(3, 1fr);
+        gap: 5px;
+        padding: 10px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .heatmap-grid span {
+        display: grid;
+        place-items: center;
+        min-height: 32px;
+        border-radius: 6px;
+        background: rgba(105, 101, 219, calc(0.08 + var(--v, 0) * 0.45));
+        color: #3c368f;
+      }
+
+      .heatmap-grid .axis {
+        background: transparent;
+        color: var(--muted);
+        justify-content: start;
+      }
+
+      .audit-samples {
+        display: grid;
+        gap: 7px;
+        padding: 10px;
+      }
+
+      .audit-sample {
+        align-items: flex-start;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #fff;
+        padding: 8px;
+        color: #333;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .audit-sample span:first-child {
+        max-width: 70%;
+      }
+
+      .audit-chip {
+        flex: none;
+        border-radius: 999px;
+        padding: 4px 7px;
+        background: #f0efff;
+        color: var(--violet);
+        font-size: 10px;
+      }
+
+      .audit-chip.orange {
+        background: #fff0e8;
+        color: var(--orange);
+      }
+
+      .audit-chip.green {
+        background: #e9f8f1;
+        color: var(--green);
+      }
+
+      .audit-chip-row {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 10px;
+        border-top: 1px solid var(--line);
+      }
+
       .writing-list {
         border-top: 1px solid var(--line);
       }
@@ -1234,6 +1437,7 @@
 
       html[data-theme="dark"] .artifact-bar,
       html[data-theme="dark"] .mini-card,
+      html[data-theme="dark"] .audit-panel,
       html[data-theme="dark"] .stream-card,
       html[data-theme="dark"] .tool-row,
       html[data-theme="dark"] .task-row,
@@ -1247,6 +1451,9 @@
       html[data-theme="dark"] .stream-line,
       html[data-theme="dark"] .tool-label,
       html[data-theme="dark"] .task-main b,
+      html[data-theme="dark"] .audit-panel-head b,
+      html[data-theme="dark"] .audit-row strong,
+      html[data-theme="dark"] .audit-metric b,
       html[data-theme="dark"] .press-mark,
       html[data-theme="dark"] .community-card b,
       html[data-theme="dark"] .metric-card b,
@@ -1255,6 +1462,8 @@
       }
 
       html[data-theme="dark"] .mini-card,
+      html[data-theme="dark"] .audit-note,
+      html[data-theme="dark"] .audit-sample,
       html[data-theme="dark"] .tool-chip,
       html[data-theme="dark"] .proof-meta,
       html[data-theme="dark"] .press-context,
@@ -1266,6 +1475,14 @@
       html[data-theme="dark"] .writing-dash-head span,
       html[data-theme="dark"] .writing-links a {
         color: var(--muted);
+      }
+
+      html[data-theme="dark"] .audit-sample {
+        background: var(--surface);
+      }
+
+      html[data-theme="dark"] .heatmap-grid span:not(.axis) {
+        color: #d7d3ff;
       }
 
       html[data-theme="dark"] .metric-card {
@@ -1385,6 +1602,12 @@
         height: 100%;
         border: 0;
         background: transparent;
+        opacity: 1;
+        transition: opacity 120ms ease;
+      }
+
+      .city-footer-frame.is-theme-syncing {
+        opacity: 0;
       }
 
       .connect p {
@@ -1503,9 +1726,32 @@
 
         .artifact-grid,
         .audit-grid,
+        .audit-hero,
+        .audit-heatmap,
         .company-links,
         .community {
           grid-template-columns: 1fr;
+        }
+
+        .audit-metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .audit-metric {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .audit-metric:last-child {
+          border-bottom: 0;
+        }
+
+        .audit-sample {
+          display: grid;
+        }
+
+        .audit-sample span:first-child {
+          max-width: none;
         }
       }
     </style>
@@ -1608,24 +1854,65 @@
               <span class="work-meta">McGill / 1M+ tweets / BERT + LSTM</span>
             </summary>
             <div class="artifact">
-              <div class="artifact-bar"><span>mcgill/thesis</span><span>90-page MSc thesis</span></div>
+              <div class="artifact-bar"><span>model-audit/hate-speech</span><span>1M+ tweets / MSc research</span></div>
               <div class="artifact-body">
-                <p>Hate-speech detection research focused on model evaluation, bias, fairness, and interpretability. The key lesson: aggregate accuracy can look strong while failures still land unevenly across language patterns and edge cases.</p>
-                <div class="audit-grid">
-                  <div class="mini-card">
-                    <b>model comparison</b>
-                    <div class="bar-list">
-                      <span>Logistic Regression</span><div class="bar"><i style="width:52%"></i></div>
-                      <span>LSTM</span><div class="bar"><i style="width:66%"></i></div>
-                      <span>BERT</span><div class="bar"><i style="width:78%"></i></div>
+                <p>Research UI for auditing hate-speech classifiers beyond headline accuracy: compare models, inspect uneven failure modes, and surface where predictions break across language patterns.</p>
+                <div class="audit-console" aria-label="NLP model audit dashboard">
+                  <div class="audit-hero">
+                    <div class="audit-panel">
+                      <div class="audit-panel-head"><b>model leaderboard</b><span>macro F1 / held-out test</span></div>
+                      <div class="audit-leaderboard">
+                        <div class="audit-row">
+                          <strong>BERT fine-tune</strong>
+                          <span class="audit-score"><i style="--score:84%"></i>0.84</span>
+                        </div>
+                        <div class="audit-row">
+                          <strong>BiLSTM + GloVe</strong>
+                          <span class="audit-score"><i style="--score:71%"></i>0.71</span>
+                        </div>
+                        <div class="audit-row">
+                          <strong>LogReg TF-IDF</strong>
+                          <span class="audit-score"><i style="--score:61%"></i>0.61</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="audit-panel">
+                      <div class="audit-metric-grid">
+                        <div class="audit-metric"><small>corpus</small><b>1M+</b></div>
+                        <div class="audit-metric"><small>classes</small><b>3</b></div>
+                        <div class="audit-metric"><small>audit</small><b>90p</b></div>
+                      </div>
+                      <div class="audit-note">
+                        <small>finding</small>
+                        Strong aggregate performance still hid asymmetric false positives on slang, reclaimed language, and identity-adjacent terms.
+                      </div>
                     </div>
                   </div>
-                  <div class="mini-card">
-                    <b>error analysis</b>
-                    <div class="matrix">
-                      <span>TP</span><span>FP</span><span>FN</span>
-                      <span>class</span><span>gap</span><span>bias</span>
+                  <div class="audit-heatmap">
+                    <div class="audit-panel">
+                      <div class="audit-panel-head"><b>error heatmap</b><span>normalized confusion</span></div>
+                      <div class="heatmap-grid" aria-label="Confusion matrix">
+                        <span class="axis"></span><span class="axis">hate</span><span class="axis">offensive</span><span class="axis">neutral</span>
+                        <span class="axis">hate</span><span style="--v:.92">92</span><span style="--v:.18">18</span><span style="--v:.09">09</span>
+                        <span class="axis">off.</span><span style="--v:.21">21</span><span style="--v:.76">76</span><span style="--v:.24">24</span>
+                        <span class="axis">neutral</span><span style="--v:.07">07</span><span style="--v:.31">31</span><span style="--v:.88">88</span>
+                      </div>
                     </div>
+                    <div class="audit-panel">
+                      <div class="audit-panel-head"><b>flagged slices</b><span>review queue</span></div>
+                      <div class="audit-samples">
+                        <div class="audit-sample"><span>sarcasm and quoted speech confused as author intent</span><span class="audit-chip orange">false positive</span></div>
+                        <div class="audit-sample"><span>coded harassment missed without conversation context</span><span class="audit-chip">false negative</span></div>
+                        <div class="audit-sample"><span>identity terms over-weighted without abuse markers</span><span class="audit-chip green">bias slice</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="audit-chip-row" aria-label="Audit methods">
+                    <span class="audit-chip">BERT</span>
+                    <span class="audit-chip">LSTM</span>
+                    <span class="audit-chip">TF-IDF baseline</span>
+                    <span class="audit-chip orange">fairness gaps</span>
+                    <span class="audit-chip green">interpretability</span>
                   </div>
                 </div>
               </div>
@@ -2055,6 +2342,24 @@
         });
       }
 
+      function setCityFooterUrlTheme() {
+        document.querySelectorAll(".city-footer-frame").forEach((frame) => {
+          const url = new URL(frame.getAttribute("src"), window.location.href);
+          url.searchParams.set("theme", document.documentElement.dataset.theme);
+          const nextSrc = `${url.pathname}${url.search}${url.hash}`;
+          if (frame.getAttribute("src") !== nextSrc) frame.setAttribute("src", nextSrc);
+        });
+      }
+
+      function transitionCityFooterTheme() {
+        const frames = document.querySelectorAll(".city-footer-frame");
+        frames.forEach((frame) => frame.classList.add("is-theme-syncing"));
+        window.setTimeout(() => {
+          syncCityFooterTheme();
+          frames.forEach((frame) => frame.classList.remove("is-theme-syncing"));
+        }, 130);
+      }
+
       function updateLocalTime() {
         const target = document.querySelector("[data-local-time]");
         if (!target) return;
@@ -2095,6 +2400,7 @@
       }
 
       syncThemeToggle();
+      setCityFooterUrlTheme();
       syncCityFooterTheme();
       updateLocalTime();
       updateLocalWeather();
@@ -2109,7 +2415,7 @@
         document.documentElement.dataset.theme = nextTheme;
         localStorage.setItem("theme", nextTheme);
         syncThemeToggle();
-        syncCityFooterTheme();
+        transitionCityFooterTheme();
       });
 
       let clickAudio;
