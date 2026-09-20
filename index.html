@@ -680,6 +680,236 @@
         font-size: 11px;
       }
 
+      .gtm-console {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(220px, 0.95fr);
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .gtm-card,
+      .gtm-mini-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfbfa;
+        overflow: hidden;
+      }
+
+      .gtm-card-head,
+      .gtm-row,
+      .gtm-route,
+      .gtm-evidence li,
+      .gtm-outreach-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .gtm-card-head {
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .gtm-card-head b,
+      .gtm-row b,
+      .gtm-route b,
+      .gtm-outreach-head b {
+        color: #111;
+        font-weight: 500;
+      }
+
+      .gtm-score {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 50% 50%, #fbfbfa 0 46%, transparent 47%),
+          conic-gradient(var(--green) 0 82%, #e7ece8 82% 100%);
+        color: var(--green);
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .gtm-account {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .gtm-account h3 {
+        margin: 0 0 4px;
+        font-size: 18px;
+        font-weight: 520;
+        letter-spacing: -0.05em;
+      }
+
+      .gtm-account p,
+      .gtm-outreach p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .gtm-signal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .gtm-signal {
+        padding: 10px;
+        border-right: 1px solid var(--line);
+      }
+
+      .gtm-signal:last-child {
+        border-right: 0;
+      }
+
+      .gtm-signal small,
+      .gtm-route small,
+      .gtm-mini-card small {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .gtm-signal b {
+        display: block;
+        color: #111;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .gtm-route {
+        padding: 10px;
+      }
+
+      .gtm-route-pill {
+        border-radius: 999px;
+        background: #e9f8f1;
+        padding: 4px 8px;
+        color: var(--green);
+        font-size: 10px;
+      }
+
+      .gtm-rail {
+        display: grid;
+        gap: 10px;
+      }
+
+      .gtm-evidence {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding: 10px;
+        list-style: none;
+      }
+
+      .gtm-evidence li {
+        align-items: flex-start;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #fff;
+        padding: 8px;
+        color: #333;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .gtm-evidence span:first-child {
+        max-width: 72%;
+      }
+
+      .gtm-chip {
+        flex: none;
+        border-radius: 999px;
+        background: #eef3ff;
+        padding: 4px 7px;
+        color: var(--blue);
+        font-size: 10px;
+      }
+
+      .gtm-chip.green {
+        background: #e9f8f1;
+        color: var(--green);
+      }
+
+      .gtm-chip.orange {
+        background: #fff0e8;
+        color: var(--orange);
+      }
+
+      .gtm-crm {
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr);
+        border-top: 1px solid var(--line);
+      }
+
+      .gtm-crm span {
+        padding: 7px 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .gtm-crm b {
+        overflow: hidden;
+        padding: 7px 10px;
+        border-bottom: 1px solid var(--line);
+        color: #222;
+        font-size: 11px;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .gtm-crm span:nth-last-child(-n + 2),
+      .gtm-crm b:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .gtm-outreach {
+        grid-column: 1 / -1;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fbfbfa, #f7f7f5);
+        padding: 10px;
+      }
+
+      .gtm-outreach-head {
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .gtm-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .gtm-actions span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        padding: 4px 8px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
       .tool-chip-ui {
         display: grid;
         gap: 8px;
@@ -1428,6 +1658,10 @@
       html[data-theme="dark"] .stream-action,
       html[data-theme="dark"] .tool-chip,
       html[data-theme="dark"] .task-status,
+      html[data-theme="dark"] .gtm-card,
+      html[data-theme="dark"] .gtm-mini-card,
+      html[data-theme="dark"] .gtm-outreach,
+      html[data-theme="dark"] .gtm-actions span,
       html[data-theme="dark"] .community-card,
       html[data-theme="dark"] .writing-dash,
       html[data-theme="dark"] .writing-links a {
@@ -1441,6 +1675,8 @@
       html[data-theme="dark"] .stream-card,
       html[data-theme="dark"] .tool-row,
       html[data-theme="dark"] .task-row,
+      html[data-theme="dark"] .gtm-card,
+      html[data-theme="dark"] .gtm-mini-card,
       html[data-theme="dark"] .chart-panel,
       html[data-theme="dark"] .growth-panel,
       html[data-theme="dark"] .brand-chip {
@@ -1454,6 +1690,12 @@
       html[data-theme="dark"] .audit-panel-head b,
       html[data-theme="dark"] .audit-row strong,
       html[data-theme="dark"] .audit-metric b,
+      html[data-theme="dark"] .gtm-card-head b,
+      html[data-theme="dark"] .gtm-account h3,
+      html[data-theme="dark"] .gtm-signal b,
+      html[data-theme="dark"] .gtm-route b,
+      html[data-theme="dark"] .gtm-crm b,
+      html[data-theme="dark"] .gtm-outreach-head b,
       html[data-theme="dark"] .press-mark,
       html[data-theme="dark"] .community-card b,
       html[data-theme="dark"] .metric-card b,
@@ -1464,6 +1706,10 @@
       html[data-theme="dark"] .mini-card,
       html[data-theme="dark"] .audit-note,
       html[data-theme="dark"] .audit-sample,
+      html[data-theme="dark"] .gtm-account p,
+      html[data-theme="dark"] .gtm-evidence li,
+      html[data-theme="dark"] .gtm-outreach p,
+      html[data-theme="dark"] .gtm-actions span,
       html[data-theme="dark"] .tool-chip,
       html[data-theme="dark"] .proof-meta,
       html[data-theme="dark"] .press-context,
@@ -1479,6 +1725,17 @@
 
       html[data-theme="dark"] .audit-sample {
         background: var(--surface);
+      }
+
+      html[data-theme="dark"] .gtm-evidence li,
+      html[data-theme="dark"] .gtm-actions span {
+        background: var(--surface);
+      }
+
+      html[data-theme="dark"] .gtm-score {
+        background:
+          radial-gradient(circle at 50% 50%, var(--surface-soft) 0 46%, transparent 47%),
+          conic-gradient(var(--green) 0 82%, #242f2b 82% 100%);
       }
 
       html[data-theme="dark"] .heatmap-grid span:not(.axis) {
@@ -1728,6 +1985,7 @@
         .audit-grid,
         .audit-hero,
         .audit-heatmap,
+        .gtm-console,
         .company-links,
         .community {
           grid-template-columns: 1fr;
@@ -1751,6 +2009,43 @@
         }
 
         .audit-sample span:first-child {
+          max-width: none;
+        }
+
+        .gtm-signal-grid,
+        .gtm-crm {
+          grid-template-columns: 1fr;
+        }
+
+        .gtm-signal {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .gtm-signal:last-child {
+          border-bottom: 0;
+        }
+
+        .gtm-crm span {
+          border-bottom: 0;
+          padding-bottom: 2px;
+        }
+
+        .gtm-crm b {
+          border-bottom: 1px solid var(--line);
+          padding-top: 2px;
+          white-space: normal;
+        }
+
+        .gtm-crm b:last-child {
+          border-bottom: 0;
+        }
+
+        .gtm-evidence li {
+          display: grid;
+        }
+
+        .gtm-evidence span:first-child {
           max-width: none;
         }
       }
@@ -1925,45 +2220,61 @@
               <span class="work-meta">CRM + demo signals / scoring / outreach</span>
             </summary>
             <div class="artifact">
-              <div class="artifact-bar"><span>gtm/account-research</span><span>internal workflow</span></div>
+              <div class="artifact-bar"><span>gtm/intelligence-run</span><span>signal -> score -> crm -> outreach</span></div>
               <div class="artifact-body">
-                <div class="stream-card">
-                  <p class="stream-line">
-                    <span style="--i:1">This</span>
-                    <span style="--i:2">account</span>
-                    <span style="--i:3">is</span>
-                    <span style="--i:4">showing</span>
-                    <span style="--i:5">enterprise</span>
-                    <span style="--i:6">AI</span>
-                    <span style="--i:7">buying</span>
-                    <span style="--i:8">signals:</span>
-                    <span style="--i:9">new</span>
-                    <span style="--i:10">medical</span>
-                    <span style="--i:11">imaging</span>
-                    <span style="--i:12">roles,</span>
-                    <span style="--i:13">clinical</span>
-                    <span style="--i:14">dataset</span>
-                    <span style="--i:15">constraints,</span>
-                    <span style="--i:16">and</span>
-                    <span style="--i:17">a</span>
-                    <span style="--i:18">likely</span>
-                    <span style="--i:19">need</span>
-                    <span style="--i:20">for</span>
-                    <span style="--i:21">synthetic</span>
-                    <span style="--i:22">validation</span>
-                    <span class="source-chip"><i class="source-dot"></i>crm</span>
-                    <span class="source-chip"><i class="source-dot green"></i>site</span>
-                    <span class="source-chip"><i class="source-dot orange"></i>notes</span>
-                  </p>
-                  <div class="stream-actions" aria-label="Agent actions">
-                    <span class="stream-action">copy</span>
-                    <span class="stream-action">retry</span>
-                    <span class="stream-action">approve</span>
-                    <span class="stream-action">send to CRM</span>
+                <div class="gtm-console" aria-label="GTM intelligence agent dashboard">
+                  <div class="gtm-card">
+                    <div class="gtm-card-head"><b>account signal</b><span>healthcare AI / enterprise</span></div>
+                    <div class="gtm-account">
+                      <div>
+                        <h3>Northstar Radiology Group</h3>
+                        <p>Detected buying intent from hiring, dataset constraints, and recent AI workflow notes.</p>
+                      </div>
+                      <div class="gtm-score" aria-label="Account fit score 82">82</div>
+                    </div>
+                    <div class="gtm-signal-grid">
+                      <div class="gtm-signal"><small>intent</small><b>high</b></div>
+                      <div class="gtm-signal"><small>segment</small><b>clinical AI</b></div>
+                      <div class="gtm-signal"><small>next step</small><b>founder intro</b></div>
+                    </div>
+                    <div class="gtm-route">
+                      <div>
+                        <small>routing decision</small>
+                        <b>Prioritize for synthetic validation pilot</b>
+                      </div>
+                      <span class="gtm-route-pill">ready</span>
+                    </div>
                   </div>
-                  <div class="stream-followups" aria-label="Follow-up prompts">
-                    <a href="https://calendly.com/rynsdri/30min">Draft founder outreach</a>
-                    <a href="https://calendly.com/rynsdri/30min">Compare against active pilots</a>
+
+                  <div class="gtm-rail">
+                    <div class="gtm-mini-card">
+                      <div class="gtm-card-head"><b>evidence</b><span>3 sources</span></div>
+                      <ul class="gtm-evidence" aria-label="Account evidence">
+                        <li><span>Hiring for imaging ML engineer with validation ownership</span><span class="gtm-chip">career page</span></li>
+                        <li><span>Clinical dataset bottleneck mentioned in demo notes</span><span class="gtm-chip green">CRM</span></li>
+                        <li><span>Compliance page references synthetic data review</span><span class="gtm-chip orange">website</span></li>
+                      </ul>
+                    </div>
+                    <div class="gtm-mini-card">
+                      <div class="gtm-card-head"><b>CRM update</b><span>auto-filled</span></div>
+                      <div class="gtm-crm" aria-label="CRM fields updated">
+                        <span>stage</span><b>qualified account</b>
+                        <span>pain</span><b>medical imaging validation data</b>
+                        <span>owner</span><b>founder-led outbound</b>
+                        <span>task</span><b>send personalized note today</b>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="gtm-outreach">
+                    <div class="gtm-outreach-head"><b>generated outreach</b><span>human approval required</span></div>
+                    <p>Noticed your team is hiring around imaging ML validation. I built Carez to help clinical AI teams generate reviewable synthetic datasets when real patient data is slow, scarce, or locked behind privacy constraints. Worth comparing notes?</p>
+                    <div class="gtm-actions" aria-label="Agent actions">
+                      <span>approve draft</span>
+                      <span>push to CRM</span>
+                      <span>create follow-up</span>
+                      <span>open account brief</span>
+                    </div>
                   </div>
                 </div>
                 <p>Built to reduce repetitive account prep and turn customer context into clearer next actions.</p>
