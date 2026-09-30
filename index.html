@@ -2050,6 +2050,7 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="assets/ui-2026-09-30/site-update.css">
   </head>
   <body>
     <main class="page">
@@ -2085,18 +2086,7 @@
         <div class="stat"><b>Growth Experimenter</b><span>Ship, measure, repeat</span></div>
       </section>
 
-      <section class="section" id="work" aria-label="Work">
-        <span class="label">Work</span>
-
-        <div class="year">
-          <h2 class="year-title"><span class="folder" aria-hidden="true"></span>2026</h2>
-
-          <details class="work-item" id="carez">
-            <summary class="work-button">
-              <span class="work-title"><span>Carez AI</span><span class="tag">Founder</span></span>
-              <span class="work-meta">Healthcare AI / synthetic medical datasets</span>
-            </summary>
-            <div class="artifact">
+      <template id="legacy-carez">
               <div class="artifact-bar"><span>carez/data-designer</span><span>$500K ARR</span></div>
               <div class="artifact-body">
                 <img class="carez-image" src="assets/carez-ai-ui.png" alt="Carez AI data designer interface with annotated and unannotated medical image datasets">
@@ -2113,7 +2103,7 @@
                       <path d="M8 13h8.4c5.1 0 8.1 2.5 8.1 6.8 0 4.2-3 6.9-8.1 6.9h-3.6v4.1H8V13Zm8.1 9.9c2.2 0 3.5-1.1 3.5-3 0-1.8-1.3-2.9-3.5-2.9h-3.3v5.9h3.3Z" fill="#fff"></path>
                       <text x="36" y="24" fill="currentColor" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.8">PitchBook</text>
                     </svg>
-                    <span class="company-link-arrow">-></span>
+                    <span class="company-link-arrow">-&gt;</span>
                   </a>
                   <a href="https://www.crunchbase.com/organization/carez" aria-label="Open Carez AI on Crunchbase">
                     <svg class="company-logo" viewBox="0 0 190 36" role="img" aria-label="Crunchbase">
@@ -2121,420 +2111,21 @@
                       <path d="M17.9 11.6c2.8 0 4.9 1.4 6 3.7l-3.1 1.3c-.5-1.1-1.5-1.8-2.9-1.8-2.1 0-3.5 1.5-3.5 3.5s1.4 3.5 3.5 3.5c1.4 0 2.4-.7 3-1.8l3 1.4c-1.1 2.2-3.2 3.6-6 3.6-4.1 0-7-2.8-7-6.7s2.9-6.7 7-6.7Z" fill="#fff"></path>
                       <text x="40" y="24" fill="currentColor" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.8">crunchbase</text>
                     </svg>
-                    <span class="company-link-arrow">-></span>
+                    <span class="company-link-arrow">-&gt;</span>
                   </a>
                 </div>
               </div>
-            </div>
-          </details>
-
-          <details class="work-item" id="spendlens">
-            <summary class="work-button">
-              <span class="work-title"><span>SpendLens</span><span class="tag green">Consumer AI</span></span>
-              <span class="work-meta">100+ downloads / actively developing</span>
-            </summary>
-            <div class="artifact">
+            </template>
+<template id="legacy-spendlens">
               <iframe src="assets/spendlens-showcase.html" title="SpendLens iPhone and Mac interactive showcase" loading="lazy" style="display:block;width:100%;height:800px;border:0;background:#202022"></iframe>
               <div class="artifact-body">
                 <p>Built to figure out where my money was going. Now downloaded 100+ times. SpendLens turns bank statements into spending patterns, subscription insights, and answers you can actually trace back to the numbers.</p>
                 <p style="font-size:13px;color:var(--muted)">An indie consumer AI app. Actively developing, shipping updates, and growing it one user at a time.</p>
-                <a href="assets/spendlens-showcase.html" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue)">Explore the preview &#8599;</a>
+                <a href="assets/spendlens-showcase.html" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue)">Explore the preview ↗</a>
               </div>
-            </div>
-          </details>
-
-          <details class="work-item" id="nlp-audit">
-            <summary class="work-button">
-              <span class="work-title"><span>NLP Model Audit</span><span class="tag violet">Research</span></span>
-              <span class="work-meta">McGill / 1M+ tweets / BERT + LSTM</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>model-audit/hate-speech</span><span>1M+ tweets / MSc research</span></div>
-              <div class="artifact-body">
-                <p>Research UI for auditing hate-speech classifiers beyond headline accuracy: compare models, inspect uneven failure modes, and surface where predictions break across language patterns.</p>
-                <div class="audit-console" aria-label="NLP model audit dashboard">
-                  <div class="audit-hero">
-                    <div class="audit-panel">
-                      <div class="audit-panel-head"><b>model leaderboard</b><span>macro F1 / held-out test</span></div>
-                      <div class="audit-leaderboard">
-                        <div class="audit-row">
-                          <strong>BERT fine-tune</strong>
-                          <span class="audit-score"><i style="--score:84%"></i>0.84</span>
-                        </div>
-                        <div class="audit-row">
-                          <strong>BiLSTM + GloVe</strong>
-                          <span class="audit-score"><i style="--score:71%"></i>0.71</span>
-                        </div>
-                        <div class="audit-row">
-                          <strong>LogReg TF-IDF</strong>
-                          <span class="audit-score"><i style="--score:61%"></i>0.61</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="audit-panel">
-                      <div class="audit-metric-grid">
-                        <div class="audit-metric"><small>corpus</small><b>1M+</b></div>
-                        <div class="audit-metric"><small>classes</small><b>3</b></div>
-                        <div class="audit-metric"><small>audit</small><b>90p</b></div>
-                      </div>
-                      <div class="audit-note">
-                        <small>finding</small>
-                        Strong aggregate performance still hid asymmetric false positives on slang, reclaimed language, and identity-adjacent terms.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="audit-heatmap">
-                    <div class="audit-panel">
-                      <div class="audit-panel-head"><b>error heatmap</b><span>normalized confusion</span></div>
-                      <div class="heatmap-grid" aria-label="Confusion matrix">
-                        <span class="axis"></span><span class="axis">hate</span><span class="axis">offensive</span><span class="axis">neutral</span>
-                        <span class="axis">hate</span><span style="--v:.92">92</span><span style="--v:.18">18</span><span style="--v:.09">09</span>
-                        <span class="axis">off.</span><span style="--v:.21">21</span><span style="--v:.76">76</span><span style="--v:.24">24</span>
-                        <span class="axis">neutral</span><span style="--v:.07">07</span><span style="--v:.31">31</span><span style="--v:.88">88</span>
-                      </div>
-                    </div>
-                    <div class="audit-panel">
-                      <div class="audit-panel-head"><b>flagged slices</b><span>review queue</span></div>
-                      <div class="audit-samples">
-                        <div class="audit-sample"><span>sarcasm and quoted speech confused as author intent</span><span class="audit-chip orange">false positive</span></div>
-                        <div class="audit-sample"><span>coded harassment missed without conversation context</span><span class="audit-chip">false negative</span></div>
-                        <div class="audit-sample"><span>identity terms over-weighted without abuse markers</span><span class="audit-chip green">bias slice</span></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="audit-chip-row" aria-label="Audit methods">
-                    <span class="audit-chip">BERT</span>
-                    <span class="audit-chip">LSTM</span>
-                    <span class="audit-chip">TF-IDF baseline</span>
-                    <span class="audit-chip orange">fairness gaps</span>
-                    <span class="audit-chip green">interpretability</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>GTM Intelligence Agent</span><span class="tag green">Agent</span></span>
-              <span class="work-meta">CRM + demo signals / scoring / outreach</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>gtm/intelligence-run</span><span>signal -> score -> crm -> outreach</span></div>
-              <div class="artifact-body">
-                <div class="gtm-console" aria-label="GTM intelligence agent dashboard">
-                  <div class="gtm-card">
-                    <div class="gtm-card-head"><b>account signal</b><span>healthcare AI / enterprise</span></div>
-                    <div class="gtm-account">
-                      <div>
-                        <h3>Northstar Radiology Group</h3>
-                        <p>Detected buying intent from hiring, dataset constraints, and recent AI workflow notes.</p>
-                      </div>
-                      <div class="gtm-score" aria-label="Account fit score 82">82</div>
-                    </div>
-                    <div class="gtm-signal-grid">
-                      <div class="gtm-signal"><small>intent</small><b>high</b></div>
-                      <div class="gtm-signal"><small>segment</small><b>clinical AI</b></div>
-                      <div class="gtm-signal"><small>next step</small><b>founder intro</b></div>
-                    </div>
-                    <div class="gtm-route">
-                      <div>
-                        <small>routing decision</small>
-                        <b>Prioritize for synthetic validation pilot</b>
-                      </div>
-                      <span class="gtm-route-pill">ready</span>
-                    </div>
-                  </div>
-
-                  <div class="gtm-rail">
-                    <div class="gtm-mini-card">
-                      <div class="gtm-card-head"><b>evidence</b><span>3 sources</span></div>
-                      <ul class="gtm-evidence" aria-label="Account evidence">
-                        <li><span>Hiring for imaging ML engineer with validation ownership</span><span class="gtm-chip">career page</span></li>
-                        <li><span>Clinical dataset bottleneck mentioned in demo notes</span><span class="gtm-chip green">CRM</span></li>
-                        <li><span>Compliance page references synthetic data review</span><span class="gtm-chip orange">website</span></li>
-                      </ul>
-                    </div>
-                    <div class="gtm-mini-card">
-                      <div class="gtm-card-head"><b>CRM update</b><span>auto-filled</span></div>
-                      <div class="gtm-crm" aria-label="CRM fields updated">
-                        <span>stage</span><b>qualified account</b>
-                        <span>pain</span><b>medical imaging validation data</b>
-                        <span>owner</span><b>founder-led outbound</b>
-                        <span>task</span><b>send personalized note today</b>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="gtm-outreach">
-                    <div class="gtm-outreach-head"><b>generated outreach</b><span>human approval required</span></div>
-                    <p>Noticed your team is hiring around imaging ML validation. I built Carez to help clinical AI teams generate reviewable synthetic datasets when real patient data is slow, scarce, or locked behind privacy constraints. Worth comparing notes?</p>
-                    <div class="gtm-actions" aria-label="Agent actions">
-                      <span>approve draft</span>
-                      <span>push to CRM</span>
-                      <span>create follow-up</span>
-                      <span>open account brief</span>
-                    </div>
-                  </div>
-                </div>
-                <p>Built to reduce repetitive account prep and turn customer context into clearer next actions.</p>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Voice Qualification Agent</span><span class="tag green">Agent</span></span>
-              <span class="work-meta">Voice AI / qualification / human handoff</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>voice/qualification-run</span><span>100K+ requests context</span></div>
-              <div class="artifact-body">
-                <div class="terminal">
-                  <div><span class="muted">user</span> "I'm looking for graduate programs in AI."</div>
-                  <div><span class="blue">collect_fields</span> country=USA_or_Canada target=Fall_2025</div>
-                  <div><span class="blue">qualify</span> fields=8/12 status=qualified</div>
-                  <div><span class="ok">handoff</span> counselor-ready summary generated</div>
-                </div>
-                <p>The hard part was making the agent behave predictably when users did not follow the happy path.</p>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Medical Scribe</span><span class="tag">AI Tool</span></span>
-              <span class="work-meta">Clinical AI / translation / hospital pilots</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>scribe/soap-summary</span><span>reviewable output</span></div>
-              <div class="artifact-body">
-                <div class="tool-chip-ui">
-                  <button class="tool-header" type="button" aria-label="Medical scribe tool calls">
-                    <span>v</span><span>4 tool calls, 2 messages</span>
-                  </button>
-                  <div class="tool-row">
-                    <span class="tool-icon">1</span>
-                    <span class="tool-label">Listen</span>
-                    <span class="tool-chip">capture.patient_context</span>
-                  </div>
-                  <div class="tool-row">
-                    <span class="tool-icon">2</span>
-                    <span class="tool-label">Translate</span>
-                    <span class="tool-chip">en_to_fr.clinical_terms</span>
-                  </div>
-                  <div class="tool-row">
-                    <span class="tool-icon">3</span>
-                    <span class="tool-label">Write note</span>
-                    <span class="tool-chip">soap_summary.generate</span>
-                  </div>
-                  <div class="tool-row">
-                    <span class="tool-icon">4</span>
-                    <span class="tool-label">Verify</span>
-                    <span class="tool-chip">clinician_review.required</span>
-                  </div>
-                  <div class="tool-diffs" aria-label="Generated artifacts">
-                    <span class="diff-chip">+ SOAP note</span>
-                    <span class="diff-chip">+ translated summary</span>
-                    <span class="diff-chip">+ handoff fields</span>
-                  </div>
-                </div>
-                <p>Explored clinical documentation and translation workflows where trust, reviewability, and failure handling matter as much as model capability.</p>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item" id="agent-systems">
-            <summary class="work-button">
-              <span class="work-title"><span>Internal Agent Systems</span><span class="tag green">Agent</span></span>
-              <span class="work-meta">Trigger -> reasoning -> tools -> CRM action</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>agent/run-trace</span><span>completed</span></div>
-              <div class="artifact-body">
-                <div class="terminal">
-                  <div>01 trigger.received <span class="muted">new account added</span></div>
-                  <div>02 research.company_site <span class="ok">complete</span></div>
-                  <div>03 tool.call crm.update_fields <span class="blue">184ms</span></div>
-                  <div>04 reasoning.signals <span class="ok">healthcare AI / Series B</span></div>
-                  <div>05 crm.action <span class="ok">fields + notes updated</span></div>
-                  <div>06 output <span class="ok">personalized founder outreach</span></div>
-                </div>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <div class="year orange">
-          <h2 class="year-title"><span class="folder" aria-hidden="true"></span>2024-2025</h2>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Visa Slot Finder</span><span class="tag orange">Hack</span></span>
-              <span class="work-meta">2026 slot -> 2024 booked / Reddit sales</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>visa-slot-bot</span><span>$500 sold access</span></div>
-              <div class="artifact-body">
-                <div class="task-rows" aria-label="Visa slot finder task rows">
-                  <div class="task-row done" style="--i:1">
-                    <span class="task-ring">1</span>
-                    <span class="task-main"><b>Load Canadian offices</b><span>Toronto, Vancouver, Ottawa, Montreal</span></span>
-                    <span class="task-status">completed</span>
-                  </div>
-                  <div class="task-row running" style="--i:2">
-                    <span class="task-ring">2</span>
-                    <span class="task-main"><b>Scan appointment windows</b><span>checking cancellations and earlier holds</span></span>
-                    <span class="task-status">running</span>
-                  </div>
-                  <div class="task-row failed" style="--i:3">
-                    <span class="task-ring">3</span>
-                    <span class="task-main"><b>Retry stale session</b><span>expired token, refreshed automatically</span></span>
-                    <span class="task-status">failed -> retry</span>
-                  </div>
-                  <div class="task-row done" style="--i:4">
-                    <span class="task-ring">4</span>
-                    <span class="task-main"><b>Hold earlier slot</b><span>2026 baseline moved to 2024 booking path</span></span>
-                    <span class="task-status">completed</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Sneaker Bots</span><span class="tag orange">Automation</span></span>
-              <span class="work-meta">Resale automation / $4K</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>ryan@sneakerbot:~</span><span>queue paused</span></div>
-              <div class="artifact-body">
-                <div class="terminal">
-                  <div>$ load drop_tasks --profiles=8 --proxies=12</div>
-                  <div><span class="muted">loaded</span> SNKRS / Footlocker / Shopify / StockX / Kith</div>
-                  <div>$ monitor --keywords "jordan,dunk,yeezy" --sizes 9-11</div>
-                  <div><span class="ok">SNKRS</span> Jordan 4 Thunder -> monitoring</div>
-                  <div><span class="ok">Footlocker</span> Dunk Low Panda -> checkout</div>
-                  <div><span class="blue">profit</span> $4.2K</div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Price Monitor</span><span class="tag orange">Signals</span></span>
-              <span class="work-meta">Monitoring / threshold alerts</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>price-monitor</span><span>opportunity found</span></div>
-              <div class="artifact-body">
-                <div class="artifact-grid">
-                  <div class="mini-card"><b>tracked</b>MacBook Air M3</div>
-                  <div class="mini-card"><b>target</b>$899 alert armed</div>
-                  <div class="mini-card"><b>signal</b>price dropped 7%</div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="work-item">
-            <summary class="work-button">
-              <span class="work-title"><span>Professional Gaming Career</span><span class="tag">Human</span></span>
-              <span class="work-meta">Peak #95 globally / retired 2020</span>
-            </summary>
-            <div class="artifact">
-              <div class="artifact-bar"><span>fifa/rank</span><span>retired 2020</span></div>
-              <div class="artifact-body">
-                <div class="artifact-grid">
-                  <div class="mini-card"><b>rank</b>#95 globally</div>
-                  <div class="mini-card"><b>field</b>5M+ players</div>
-                  <div class="mini-card"><b>trait</b>competitive about the work</div>
-                </div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="section" id="elsewhere" aria-label="Elsewhere">
-        <div class="proof-head">
-          <span class="label">Elsewhere</span>
-          <span class="proof-note">rewards / features / media</span>
-          <h2>Selected proof, kept quiet.</h2>
-        </div>
-        <div class="proof-list">
-          <a class="proof-item" href="https://devpost.com/software/railvision">
-            <span class="proof-title">
-              <b>Canada's Biggest Hackathon Winner</b>
-              <span class="proof-kind orange">Reward</span>
-            </span>
-            <span class="proof-meta">RailVision / McHacks Challenge</span>
-            <span class="work-meta">Feature</span>
-          </a>
-          <a class="press-mark major" href="https://www.nytimes.com/2025/12/28/business/us-immigration-trump-1920s.html">
-            <span class="press-name"><b>The New York Times</b><span class="proof-kind">Feature</span></span>
-            <span class="press-context">press</span>
-            <small>feature</small>
-          </a>
-          <a class="press-mark major" href="https://webcast.wipo.int/video/WIPO_IP_CONV_GE_2_2025-10-28_AM_126016">
-            <span class="press-name"><b>United Nations / WIPO</b><span class="proof-kind violet">Media</span></span>
-            <span class="press-context">synthetic media and IP</span>
-            <small>talk</small>
-          </a>
-          <a class="press-mark" href="https://www.eranyc.com/">
-            <span class="press-name"><b>ERA</b><span class="proof-kind green">Accelerator</span></span>
-            <span class="press-context">New York City</span>
-            <small>backed</small>
-          </a>
-          <a class="press-mark" href="https://creativedestructionlab.com/">
-            <span class="press-name"><b>CDL AI</b><span class="proof-kind green">Accelerator</span></span>
-            <span class="press-context">Artificial Intelligence Stream</span>
-            <small>backed</small>
-          </a>
-          <a class="press-mark" href="https://www.nextcanada.com/">
-            <span class="press-name"><b>NEXT36</b><span class="proof-kind green">Founder</span></span>
-            <span class="press-context">Founder Program</span>
-            <small>selected</small>
-          </a>
-          <span class="press-mark">
-            <span class="press-name"><b>Startup:NYC</b><span class="proof-kind orange">Feature</span></span>
-            <span class="press-context">founder spotlight</span>
-            <small>media</small>
-          </span>
-          <span class="press-mark">
-            <span class="press-name"><b>Seattle Times</b><span class="proof-kind">Media</span></span>
-            <span class="press-context">medical imaging</span>
-            <small>press</small>
-          </span>
-          <a class="press-mark" href="https://www.mcgill.ca/">
-            <span class="press-name"><b>McGill</b><span class="proof-kind violet">Research</span></span>
-            <span class="press-context">research ecosystem</span>
-            <small>school</small>
-          </a>
-        </div>
-        <div class="community">
-          <a class="community-card" href="https://cognition.com/">
-            <span class="proof-kind green">Ambassador</span>
-            <b>Cognition</b>
-            <span>builder community and agent systems ecosystem</span>
-            <small>visit -></small>
-          </a>
-          <a class="community-card" href="https://www.mcgill.ca/engine/funding-programs/students/techaccel-program/techaccel-mentors">
-            <span class="proof-kind violet">Mentorship</span>
-            <b>McGill Engine</b>
-            <span>mentoring founders, student builders, and early technical teams</span>
-            <small>visit -></small>
-          </a>
-          <a class="community-card" href="https://cdn.prod.website-files.com/67e1cd63e75a1dba6c12ff00/6840e30e8418f987364b89af_Carez%20AI%20-%20Whitepaper.pdf">
-            <span class="proof-kind">Paper</span>
-            <b>Carez AI White Paper</b>
-            <span>synthetic medical data, model training, and validation perspective</span>
-            <small>read -></small>
-          </a>
-        </div>
-      </section>
+            </template>
+      <section class="section ui-modern" id="work" aria-label="Work"><div id="work-modern"></div></section>
+      <section class="section ui-modern" id="elsewhere" aria-label="Elsewhere"><div id="elsewhere-modern"></div></section>
 
       <section class="section" id="writing" aria-label="Writing">
         <span class="label">Writing</span>
@@ -2771,5 +2362,6 @@
         }
       }, { passive: true });
     </script>
+    <script type="module" src="assets/ui-2026-09-30/portfolio-ui.js"></script>
   </body>
 </html>
