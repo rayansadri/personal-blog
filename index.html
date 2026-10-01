@@ -1798,6 +1798,13 @@
         border-top: 1px solid var(--line);
       }
 
+      .location-line { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 24px; font-family: var(--mono); }
+      .location-route { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 400; }
+      .location-prompt { color: var(--blue); }
+      .location-arrow { color: var(--muted); font-size: 14px; }
+      .location-clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+      @media (max-width: 420px) { .location-line { gap: 12px; } .location-route { font-size: 14px; gap: 9px; } .location-clock { font-size: 11px; } }
+
       .city-footer-shell {
         position: relative;
         margin: 14px 0 18px;
@@ -2191,25 +2198,10 @@
       </section>
 
       <footer class="connect" id="contact">
-        <span class="label">Where to find me</span>
-        <div class="city-footer-shell">
-          <div class="city-footer-status" aria-live="polite">
-            <span data-local-time>ET --:--</span>
-            <span data-local-weather>weather loading</span>
-          </div>
-          <div class="city-mix-stage city-mix-stage-single" aria-label="Toronto city scene">
-            <div class="city-pane city-pane-toronto">
-              <iframe
-                class="city-footer-frame"
-                src="assets/toronto-footer.html?v=footer-originalish-1"
-                title="Toronto footer scene"
-                loading="lazy"
-                scrolling="no"
-              ></iframe>
-            </div>
-          </div>
+        <div class="location-line" aria-label="Based in Toronto and New York City">
+          <span class="location-route"><span class="location-prompt" aria-hidden="true">~/</span> Toronto <span class="location-arrow" aria-hidden="true">↔</span> NYC</span>
+          <span class="location-clock" data-local-time aria-label="Current Eastern time">--:-- ET</span>
         </div>
-        <p>I'm open to founder-to-founder chats, AI product work, GTM systems, and technical partnerships.</p>
         <div class="links">
           <a href="https://calendly.com/rynsdri/30min">Book a coffee chat</a>
           <span>·</span>
@@ -2235,32 +2227,6 @@
         if (themeLabel) themeLabel.textContent = dark ? "Day" : "Night";
       }
 
-      function syncCityFooterTheme() {
-        document.querySelectorAll(".city-footer-frame").forEach((frame) => {
-          frame.contentWindow?.postMessage({
-            type: "rayansadri-theme",
-            theme: document.documentElement.dataset.theme
-          }, window.location.origin);
-        });
-      }
-
-      function setCityFooterUrlTheme() {
-        document.querySelectorAll(".city-footer-frame").forEach((frame) => {
-          const url = new URL(frame.getAttribute("src"), window.location.href);
-          url.searchParams.set("theme", document.documentElement.dataset.theme);
-          const nextSrc = `${url.pathname}${url.search}${url.hash}`;
-          if (frame.getAttribute("src") !== nextSrc) frame.setAttribute("src", nextSrc);
-        });
-      }
-
-      function transitionCityFooterTheme() {
-        const frames = document.querySelectorAll(".city-footer-frame");
-        frames.forEach((frame) => frame.classList.add("is-theme-syncing"));
-        window.setTimeout(() => {
-          syncCityFooterTheme();
-          frames.forEach((frame) => frame.classList.remove("is-theme-syncing"));
-        }, 130);
-      }
 
       function updateLocalTime() {
         const target = document.querySelector("[data-local-time]");
@@ -2275,49 +2241,16 @@
         target.textContent = `${time} ET`;
       }
 
-      function weatherLabel(code) {
-        if ([0, 1].includes(code)) return "clear";
-        if ([2, 3].includes(code)) return "cloudy";
-        if ([45, 48].includes(code)) return "fog";
-        if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "rain";
-        if ([71, 73, 75, 77, 85, 86].includes(code)) return "snow";
-        if ([95, 96, 99].includes(code)) return "storm";
-        return "weather";
-      }
-
-      async function updateLocalWeather() {
-        const target = document.querySelector("[data-local-weather]");
-        if (!target) return;
-
-        try {
-          const url = "https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current=temperature_2m,weather_code&temperature_unit=fahrenheit";
-          const response = await fetch(url, { cache: "no-store" });
-          if (!response.ok) throw new Error("weather unavailable");
-          const data = await response.json();
-          const temp = Math.round(data.current.temperature_2m);
-          target.textContent = `Toronto ${temp}°F, ${weatherLabel(data.current.weather_code)}`;
-        } catch (error) {
-          target.textContent = "weather unavailable";
-        }
-      }
 
       syncThemeToggle();
-      setCityFooterUrlTheme();
-      syncCityFooterTheme();
       updateLocalTime();
-      updateLocalWeather();
       setInterval(updateLocalTime, 30000);
-
-      document.querySelectorAll(".city-footer-frame").forEach((frame) => {
-        frame.addEventListener("load", syncCityFooterTheme);
-      });
 
       themeToggle?.addEventListener("click", () => {
         const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = nextTheme;
         localStorage.setItem("theme", nextTheme);
         syncThemeToggle();
-        transitionCityFooterTheme();
       });
 
       let clickAudio;
