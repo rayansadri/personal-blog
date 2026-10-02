@@ -1803,6 +1803,8 @@
       .location-prompt { color: var(--blue); }
       .location-arrow { color: var(--muted); font-size: 14px; }
       .location-clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+      .footer-art { width: min(1040px, calc(100vw - 32px)); margin: 0 0 28px 50%; transform: translateX(-50%); }
+      .footer-art img { display: block; width: 100%; height: auto; aspect-ratio: 3712 / 1152; }
       @media (max-width: 420px) { .location-line { gap: 12px; } .location-route { font-size: 14px; gap: 9px; } .location-clock { font-size: 11px; } }
 
       .city-footer-shell {
@@ -2198,6 +2200,9 @@
       </section>
 
       <footer class="connect" id="contact">
+        <figure class="footer-art">
+          <img src="assets/toronto-nyc-engraving.jpeg" width="3712" height="1152" loading="lazy" decoding="async" alt="Blue-ink architectural illustration combining Toronto and New York skylines along a waterfront and arched bridge.">
+        </figure>
         <div class="location-line" aria-label="Based in Toronto and New York City">
           <span class="location-route"><span class="location-prompt" aria-hidden="true">~/</span> Toronto <span class="location-arrow" aria-hidden="true">↔</span> NYC</span>
           <span class="location-clock" data-local-time aria-label="Current Eastern time">--:-- ET</span>
