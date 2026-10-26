@@ -10,8 +10,7 @@
     >
     <script>
       (() => {
-        const storedTheme = localStorage.getItem("theme");
-        document.documentElement.dataset.theme = storedTheme === "light" ? "light" : "dark";
+        document.documentElement.dataset.theme = "dark";
       })();
     </script>
     <style>
@@ -97,8 +96,20 @@
       }
 
       .name {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
         font-size: 16px;
         line-height: 1.3;
+      }
+
+      .profile-portrait {
+        display: block;
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        border-radius: 8px;
       }
 
       .nav {
@@ -254,6 +265,122 @@
         font-size: 16px;
         line-height: 1.48;
         letter-spacing: -0.035em;
+      }
+
+      .partnership-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 7px;
+        padding: 5px 13px 5px 5px;
+        border: 1px solid #ccebd8;
+        border-radius: 999px;
+        background: #effaf3;
+        color: #146c45;
+        font-size: 13px;
+        font-weight: 650;
+        line-height: 1;
+        transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+      }
+
+      .partnership-cta:hover {
+        transform: translateY(-1px);
+        border-color: #a8dfbe;
+        background: #e5f7ec;
+        color: #0b5936;
+      }
+
+      .partnership-cta-icon {
+        display: grid;
+        width: 27px;
+        height: 27px;
+        place-items: center;
+        border-radius: 50%;
+        background: #46d792;
+        color: #073b29;
+      }
+
+      .partnership-cta-icon svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      html[data-theme="dark"] .partnership-cta {
+        border-color: #24533c;
+        background: #14271e;
+        color: #a6e7bf;
+      }
+
+      html[data-theme="dark"] .partnership-cta:hover {
+        border-color: #347450;
+        background: #192f24;
+        color: #c3f2d3;
+      }
+
+      .creator-preview {
+        display: block;
+        margin: 30px 0;
+        color: inherit;
+        text-decoration: none;
+      }
+      .creator-preview-art {
+        display: block;
+      }
+      .creator-preview-art img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 200ms ease;
+      }
+      .creator-preview:hover .creator-preview-art img { transform: translateY(-3px); }
+      .creator-preview-caption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: 0;
+      }
+      .creator-preview-caption strong {
+        display: block;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .creator-preview-caption small {
+        display: block;
+        margin-top: 5px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .creator-preview-arrow {
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #b7f278;
+        color: #234821;
+        font-size: 22px;
+      }
+      @media (max-width: 600px) {
+        .creator-preview-caption { flex-wrap: wrap; gap: 12px; }
+        .creator-preview-art img { aspect-ratio: 1; }
+        .creator-preview-caption strong { font-size: 15px; }
+        .creator-preview-caption small { font-size: 11px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .creator-preview-art img { transition: none; }
+        .creator-preview:hover .creator-preview-art img { transform: none; }
       }
 
       .pill {
@@ -1882,85 +2009,6 @@
         border-top: 1px solid var(--line);
       }
 
-      .location-line { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 24px; font-family: var(--mono); }
-      .location-route { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 400; }
-      .location-prompt { color: var(--blue); }
-      .location-arrow { color: var(--muted); font-size: 14px; }
-      .location-clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
-      .footer-art { width: 100%; margin: 0 0 28px; }
-      .footer-art img { display: block; width: 100%; height: auto; aspect-ratio: 3712 / 1152; filter: grayscale(1) contrast(1.15) brightness(1.08); mix-blend-mode: multiply; opacity: .7; }
-      html[data-theme="dark"] .footer-art img { filter: grayscale(1) contrast(1.15) brightness(1.08) invert(1); mix-blend-mode: screen; opacity: .55; }
-      @media (max-width: 420px) { .location-line { gap: 12px; } .location-route { font-size: 14px; gap: 9px; } .location-clock { font-size: 11px; } }
-
-      .city-footer-shell {
-        position: relative;
-        margin: 14px 0 18px;
-        padding: 16px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        overflow: hidden;
-        background: #f5f6f2;
-      }
-
-      .city-footer-status {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-        margin-bottom: 12px;
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.2;
-      }
-
-      .city-footer-status span {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.58);
-        padding: 7px 10px 6px;
-      }
-
-      .city-mix-stage {
-        position: relative;
-        min-height: clamp(340px, 48vw, 392px);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        overflow: hidden;
-        background:
-          linear-gradient(90deg, rgba(245, 246, 242, 0.98), rgba(245, 246, 242, 0.58) 48%, rgba(245, 246, 242, 0.98)),
-          #eef1e8;
-      }
-
-      .city-pane {
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 58%;
-        opacity: 0.95;
-        pointer-events: none;
-      }
-
-      .city-pane-toronto {
-        clip-path: polygon(0 0, 94% 0, 78% 100%, 0 100%);
-      }
-
-      .city-mix-stage-single .city-pane {
-        width: 100%;
-        clip-path: none;
-      }
-
-      .city-footer-frame {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border: 0;
-        background: transparent;
-        opacity: 1;
-        transition: opacity 120ms ease;
-      }
-
-      .city-footer-frame.is-theme-syncing {
-        opacity: 0;
-      }
-
       .connect p {
         margin: 0 0 14px;
         font-size: 16px;
@@ -1976,18 +2024,6 @@
         font-size: 13px;
       }
 
-      html[data-theme="dark"] .city-footer-shell {
-        background: #090d15;
-      }
-
-      html[data-theme="dark"] .city-mix-stage {
-        background: #101622;
-      }
-
-      html[data-theme="dark"] .city-footer-status span {
-        background: rgba(255, 255, 255, 0.06);
-      }
-
       @media (max-width: 720px) {
         .page {
           width: min(100% - 28px, 690px);
@@ -2001,25 +2037,6 @@
 
         .nav {
           justify-content: flex-start;
-        }
-
-        .city-footer-shell {
-          padding: 14px;
-        }
-
-        .city-footer-status {
-          justify-content: flex-start;
-          flex-wrap: wrap;
-        }
-
-        .city-mix-stage {
-          min-height: 360px;
-        }
-
-        .city-pane {
-          width: 100%;
-          height: 100%;
-          clip-path: none;
         }
 
         .stats {
@@ -2143,17 +2160,59 @@
           max-width: none;
         }
       }
+      .top { align-items: flex-start; gap: 24px; margin-bottom: 28px; }
+      .name { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .profile-portrait { width: 128px; height: 128px; }
+      .nav { gap: 12px; padding-top: 4px; }
+      .nav .partnership-cta { margin-top: 0; min-height: 40px; font-size: 12px; color: #146c45; }
+      html[data-theme="dark"] .nav .partnership-cta { color: #a6e7bf; }
+      @media (max-width: 720px) {
+        .top { display: flex; flex-direction: column; gap: 22px; }
+        .name { flex-direction: row; align-items: center; gap: 16px; }
+        .profile-portrait { width: 104px; height: 104px; }
+        .nav { width: 100%; padding-top: 0; justify-content: flex-start; }
+      }
+      .identity { margin: 32px 0 40px; padding: 20px 0 8px; border-top: 1px solid var(--line); }
+      .identity-heading { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 11px; line-height: 1.5; margin-bottom: 24px; }
+      .identity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
+      .identity-role { --role-color: #3263cb; display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+      .identity-role:nth-child(2) { --role-color: #a34c25; }
+      .identity-role:nth-child(3) { --role-color: #188268; }
+      .identity-role:nth-child(4) { --role-color: #a73c78; }
+      .identity-number { flex-shrink: 0; color: var(--role-color); font-size: 11px; border-bottom: 2px solid currentColor; padding-bottom: 5px; }
+      .identity-role h2 { margin: 0 0 7px; color: var(--role-color); font-size: 18px; line-height: 1.4; font-weight: 500; letter-spacing: 0; overflow-wrap: anywhere; }
+      .identity-role p { margin: 0; font-size: 12px; line-height: 1.6; color: var(--muted); }
+      html[data-theme="dark"] .identity-role { --role-color: #8fb0ff; }
+      html[data-theme="dark"] .identity-role:nth-child(2) { --role-color: #efac7c; }
+      html[data-theme="dark"] .identity-role:nth-child(3) { --role-color: #77d6b4; }
+      html[data-theme="dark"] .identity-role:nth-child(4) { --role-color: #e99dc9; }
+      @media (max-width: 480px) {
+        .identity-grid { grid-template-columns: 1fr; gap: 22px; }
+        .identity-heading > span:last-child { display: none; }
+      }
+      .location-line { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 24px; font-family: var(--mono); }
+      .location-route { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 400; }
+      .location-prompt { color: var(--blue); }
+      .location-arrow { color: var(--muted); font-size: 14px; }
+      .location-clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+      .footer-art { width: 100%; margin: 0 0 28px; }
+      .footer-art img { display: block; width: 100%; height: auto; aspect-ratio: 3712 / 1152; filter: grayscale(1) contrast(1.15) brightness(1.08); mix-blend-mode: multiply; opacity: .7; }
+      html[data-theme="dark"] .footer-art img { filter: grayscale(1) contrast(1.15) brightness(1.08) invert(1); mix-blend-mode: screen; opacity: .55; }
+      @media (max-width: 420px) { .location-line { gap: 12px; } .location-route { font-size: 14px; gap: 9px; } .location-clock { font-size: 11px; } }
     </style>
     <link rel="stylesheet" href="assets/ui-2026-09-30/site-update.css?v=compact-elsewhere">
   </head>
   <body>
     <main class="page">
       <header class="top">
-        <a class="name" href="#">Rayan Sadri</a>
+        <a class="name" href="#"><img class="profile-portrait" src="assets/rayan-portrait-orange-v2.png" alt="Pixel portrait of Rayan" width="128" height="128"><span>Rayan Sadri</span></a>
         <nav class="nav" aria-label="Primary navigation">
           <a href="#work">Work</a>
           <a href="#elsewhere">Elsewhere</a>
-          <a href="#writing">Writing</a>
+          <a class="partnership-cta" href="partnerships/index.html" aria-label="Explore brand partnerships">
+            <span class="partnership-cta-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            <span>Brand partnerships</span>
+          </a>
           <a class="cta" href="https://calendly.com/rynsdri/30min" aria-label="Book a call">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 9.5h16M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01"/></svg>
             <span>Book a call</span>
@@ -2177,11 +2236,14 @@
         </p>
       </section>
 
-      <section class="stats" aria-label="What I do">
-        <div class="stat"><b>Product Hacker</b><span>Idea to working product</span></div>
-        <div class="stat"><b>AI Builder</b><span>Consumer apps &amp; enterprise</span></div>
-        <div class="stat"><b>GTM Operator</b><span>First users to paying customers</span></div>
-        <div class="stat"><b>Growth Experimenter</b><span>Ship, measure, repeat</span></div>
+      <section class="identity" aria-label="What I do">
+        <div class="identity-heading"><span>A builder, from zero to growth.</span><span aria-hidden="true">01 / 04</span></div>
+        <div class="identity-grid">
+          <div class="identity-role"><span class="identity-number" aria-hidden="true">01</span><div><h2>Product Hacker</h2><p>Idea to working product.</p></div></div>
+          <div class="identity-role"><span class="identity-number" aria-hidden="true">02</span><div><h2>AI Builder</h2><p>Consumer apps &amp; enterprise.</p></div></div>
+          <div class="identity-role"><span class="identity-number" aria-hidden="true">03</span><div><h2>GTM Operator</h2><p>First users to paying customers.</p></div></div>
+          <div class="identity-role"><span class="identity-number" aria-hidden="true">04</span><div><h2>Growth Experimenter</h2><p>Ship, measure, repeat.</p></div></div>
+        </div>
       </section>
 
       <template id="legacy-carez">
@@ -2225,68 +2287,6 @@
       <section class="section ui-modern" id="work" aria-label="Work"><div id="work-modern"></div></section>
       <section class="section ui-modern" id="elsewhere" aria-label="Elsewhere"><div id="elsewhere-modern"></div></section>
 
-      <section class="section" id="writing" aria-label="Writing">
-        <span class="label">Writing</span>
-        <div class="writing-dash">
-          <div class="writing-dash-head">
-            <h2>Audience + brand dashboard</h2>
-            <span>public building / collaborations</span>
-          </div>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <small>Impressions</small>
-              <b>12M+</b>
-              <span>founder content</span>
-            </div>
-            <div class="metric-card">
-              <small>Visits</small>
-              <b>1M+</b>
-              <span>profile + site</span>
-            </div>
-            <div class="metric-card">
-              <small>Bookmarks</small>
-              <b>200K</b>
-              <span>saved posts</span>
-            </div>
-            <div class="metric-card">
-              <small>Engaged</small>
-              <b>203K</b>
-              <span>likes/replies/reposts</span>
-            </div>
-          </div>
-          <div class="writing-chart">
-            <div class="chart-panel" aria-label="Audience growth trend">
-              <svg viewBox="0 0 520 150" role="img" aria-label="Upward audience growth line">
-                <defs>
-                  <linearGradient id="writingGradient" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stop-color="#2f67ff" stop-opacity="0.28"></stop>
-                    <stop offset="100%" stop-color="#2f67ff" stop-opacity="0"></stop>
-                  </linearGradient>
-                </defs>
-                <path class="chart-grid" d="M0 34H520M0 75H520M0 116H520"></path>
-                <path class="chart-area" d="M8 118 C58 112 76 96 115 101 C158 106 172 76 220 82 C265 88 282 54 326 58 C374 62 390 35 430 39 C468 43 484 24 512 18 L512 140 L8 140 Z"></path>
-                <path class="chart-line" d="M8 118 C58 112 76 96 115 101 C158 106 172 76 220 82 C265 88 282 54 326 58 C374 62 390 35 430 39 C468 43 484 24 512 18"></path>
-              </svg>
-            </div>
-            <div class="growth-panel">
-              <small>Signal</small>
-              <b>Distribution + trust</b>
-              <span>Audience became a channel for customers, talent, investors, and brand collaborations.</span>
-            </div>
-          </div>
-          <div class="brand-strip" aria-label="Brand collaboration signals">
-            <span class="brand-chip">brand collaborations</span>
-            <span class="brand-chip">AI founders</span>
-            <span class="brand-chip">startup operators</span>
-            <span class="brand-chip">technical audience</span>
-          </div>
-          <div class="writing-links">
-            <a href="https://twitter.com/rayansadri">X / Twitter -></a>
-            <a href="https://linkedin.com/in/ray-sadri/">LinkedIn -></a>
-            <a href="https://calendly.com/rynsdri/30min">Book a coffee chat -></a>
-          </div>
-        </div>
-      </section>
 
       <footer class="connect" id="contact">
         <figure class="footer-art">
@@ -2323,7 +2323,6 @@
         }
       }
 
-
       function updateLocalTime() {
         const target = document.querySelector("[data-local-time]");
         if (!target) return;
@@ -2336,8 +2335,6 @@
 
         target.textContent = `${time} ET`;
       }
-
-
       syncThemeToggle();
       updateLocalTime();
       setInterval(updateLocalTime, 30000);
@@ -2345,7 +2342,6 @@
       themeToggle?.addEventListener("click", () => {
         const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = nextTheme;
-        localStorage.setItem("theme", nextTheme);
         syncThemeToggle();
       });
 
@@ -2391,6 +2387,6 @@
         }
       }, { passive: true });
     </script>
-    <script type="module" src="assets/ui-2026-09-30/portfolio-ui.js?v=compact-elsewhere"></script>
+    <script defer src="assets/ui-2026-09-30/portfolio-ui.js?v=compact-elsewhere"></script>
   </body>
 </html>
