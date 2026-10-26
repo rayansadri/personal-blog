@@ -1,7 +1,7 @@
 (() => {
   const brands = [
     { name: "ERA", image: "era.jpg", href: "https://www.eranyc.com/", style: "era" },
-    { name: "Creative Destruction Lab", image: "cdl.png", href: "https://creativedestructionlab.com/", style: "cdl" },
+    { name: "Creative Destruction Lab", image: "cdl-transparent.png", href: "https://creativedestructionlab.com/", style: "cdl" },
     { name: "NEXT36", image: "next36.png", href: "https://www.nextcanada.com/", style: "next36" },
     { name: "NVIDIA Inception", image: "nvidia.png", href: "https://www.nvidia.com/en-us/startups/", style: "nvidia" }
   ];
