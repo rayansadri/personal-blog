@@ -115,13 +115,70 @@
       }
 
       .nav .cta {
-        color: #fff;
-        border: 1px solid #1e56e6;
-        border-radius: 7px;
-        background: var(--blue);
-        padding: 6px 9px;
-        transform: translateY(-6px);
-        box-shadow: 0 8px 24px rgba(47, 103, 255, 0.18);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 13px;
+        border: 1px solid #dcecff;
+        border-radius: 999px;
+        background: #edf6ff;
+        color: #1685e5;
+        font-size: 12px;
+        font-weight: 650;
+        line-height: 1;
+        white-space: nowrap;
+        transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+      }
+
+      .nav .cta svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .nav .cta .cta-arrow {
+        width: 13px;
+        height: 13px;
+        transition: transform 180ms ease;
+      }
+
+      .nav .cta:hover {
+        background: #e3f0ff;
+        border-color: #c9e2ff;
+        color: #0873d1;
+        transform: translateY(-1px);
+      }
+
+      .nav .cta:hover .cta-arrow {
+        transform: translate(2px, -2px);
+      }
+
+      .nav .cta:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      html[data-theme="dark"] .nav .cta {
+        border-color: #283d64;
+        background: #17243a;
+        color: #a6c9ff;
+      }
+
+      html[data-theme="dark"] .nav .cta:hover {
+        border-color: #385784;
+        background: #1d2d49;
+        color: #c4dcff;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nav .cta,
+        .nav .cta .cta-arrow {
+          transition: none;
+        }
       }
 
       .theme-toggle {
@@ -2095,7 +2152,11 @@
           <a href="#work">Work</a>
           <a href="#elsewhere">Elsewhere</a>
           <a href="#writing">Writing</a>
-          <a class="cta" href="https://calendly.com/rynsdri/30min">Book a coffee chat</a>
+          <a class="cta" href="https://calendly.com/rynsdri/30min" aria-label="Book a call">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 9.5h16M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01"/></svg>
+            <span>Book a call</span>
+            <svg class="cta-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg>
+          </a>
           <button class="theme-toggle" type="button" role="switch" aria-label="Switch to light theme" aria-checked="true" title="Switch to light theme">
             <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.6 8.6 0 1 0 20.8 13Z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
