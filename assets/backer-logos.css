@@ -29,7 +29,7 @@ html[data-theme="dark"] .backer-logos .backer-nvidia { mix-blend-mode: screen; }
 html[data-theme="dark"] .backer-logos .backer-era img,
 html[data-theme="dark"] .backer-logos .backer-nvidia img { filter: invert(1) grayscale(1); }
 html[data-theme="dark"] .backer-logos .backer-cdl img { filter: brightness(0) invert(1); }
-html[data-theme="dark"] .backer-logos .backer-next36 img { filter: none; }
+html[data-theme="dark"] .backer-logos .backer-next36 img { filter: brightness(0) invert(1); }
 .backer-logos .backer-logo:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .backer-logos .backer-logo:hover { transform: translateY(-2px); }
