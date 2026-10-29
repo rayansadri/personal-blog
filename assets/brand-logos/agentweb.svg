@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 384 384" fill="none">
+  <style>
+    .mark{fill:#0B0D14}
+    @media (prefers-color-scheme:dark){.mark{fill:#fff}}
+  </style>
+  <g class="mark">
+    <path d="M80 236 226 90a14 14 0 0 1 10-4v74a20 20 0 0 1-6 14l-56 56a20 20 0 0 1-14 6H80Z"/>
+    <path d="m432 236-146-146a14 14 0 0 0-10-4v74a20 20 0 0 0 6 14l56 56a20 20 0 0 0 14 6h80Z"/>
+    <path d="M80 276 226 422a14 14 0 0 0 10 4v-74a20 20 0 0 0-6-14l-56-56a20 20 0 0 0-14-6H80Z"/>
+    <path d="m432 276-146 146a14 14 0 0 1-10 4v-74a20 20 0 0 1 6-14l56-56a20 20 0 0 1 14-6h80Z"/>
+    <path d="m256 190 66 66-66 66-66-66 66-66Z"/>
+  </g>
+</svg>
