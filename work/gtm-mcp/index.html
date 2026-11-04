@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>GTM MCP / Rayan Sadri</title><link rel="stylesheet" href="showcase.css"></head>
+<body><nav><a href="../../index.html#work">← Rayan Sadri / Work</a><span>LOCAL BUILD · v0.1</span></nav>
+<main><section class="project"><div class="intro"><p class="eyebrow">&gt; PROJECT / <b>GTM MCP</b></p><h1>GTM MCP<span>_</span></h1><p class="lede">Account research tools for agents.<br>Control stays with you.</p>
+<dl><div><dt>MCP-native</dt><dd>Seven real tools over stdio. Structured inputs and outputs.</dd></div><div><dt>Explainable by default</dt><dd>Every ICP score includes the criteria behind it.</dd></div><div><dt>Human-approved writes</dt><dd>Inspect the payload. Approve locally. Then commit.</dd></div><div><dt>Open &amp; portable</dt><dd>TypeScript, Ink, React, Zod. MIT licensed. Runs locally.</dd></div></dl>
+<a class="source" href="../../assets/gtm-mcp-source.zip" download>Download source <span>↗</span></a></div>
+<figure><img src="../../gtm-mcp/docs/terminal.png" width="1324" height="890" alt="Actual GTM MCP terminal capture with ranked fixture companies, seven tools, and human approval gate"><figcaption><span class="dot"></span> Real terminal capture / fictional account data / no external connectors</figcaption></figure></section>
+<section class="details"><div><h2>The write boundary.</h2><pre aria-label="Architecture diagram">AI client
+    │ stdio
+    ▼
+ GTM MCP ──► Research + scoring
+    │
+    ▼
+ Proposal ──► Human review
+                  │ approve
+                  ▼
+              Local CRM</pre><p class="muted">An MCP agent cannot approve its own proposal. Approval is bound to a payload digest, record version, and 15-minute expiry.</p></div>
+<div class="setup"><h2>Run it.</h2><p>Node.js 22+. Unzip the source, then:</p><pre><code>cd gtm-mcp
+npm ci
+npm run build
+node dist/cli.js demo</code></pre><div class="links"><a href="../../gtm-mcp/README.md">README ↗</a><a href="../../gtm-mcp/docs/demo.cast" download>Terminal recording ↓</a></div><p class="muted">Tab through Tools, Plan, Output and Logs. Arrow keys select accounts. Q exits. This page is a showcase; the executable product runs in your terminal.</p></div></section>
+<section class="scope"><h2>What works today.</h2><p>Fixture search and enrichment, documented ICP scoring, template outreach, persistent local CRM context, immutable proposals and human-gated commits. The same engine powers the CLI and MCP server.</p><p>External CRM, web search, and LLM integrations are not connected. All accounts and signals are fictional. No messages are sent. The approval boundary assumes the agent cannot access your shell or state files.</p></section></main>
+<footer><span>GTM MCP / Built locally</span><a href="../../index.html#work">Back to Work ↗</a></footer></body></html>
