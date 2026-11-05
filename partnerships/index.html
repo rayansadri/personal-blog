@@ -287,6 +287,33 @@
     @media(max-width:380px){.service-grid{grid-template-columns:1fr}.service-card{min-height:0}.service-select{margin-top:12px!important}}
 
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.pw-wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
+.pw-tile{grid-column:span 4;position:relative;min-height:216px;background:#202222;color:white;isolation:isolate}
+.pw-tile:nth-child(1){grid-column:span 5}
+.pw-tile:nth-child(2){grid-column:span 3;background:#e6a1d8;color:#21151e}
+.pw-tile:nth-child(3){background:#dce0db;color:#151714}
+.pw-tile:nth-child(4){grid-column:span 3;background:#76b69c;color:#152720}
+.pw-tile:nth-child(5){background:#f0a965;color:#24190d}
+.pw-tile:nth-child(6){grid-column:span 5;background:#e9ee74;color:#202210}
+.pw-face{position:absolute;inset:0;width:100%;border:0;background:none;color:inherit;text-align:left;cursor:pointer;padding:18px;font:inherit;display:flex;flex-direction:column;justify-content:space-between}
+.pw-meta{display:flex;justify-content:space-between}
+.pw-face img{position:absolute;top:47%;left:50%;transform:translate(-50%,-50%);max-width:56%;width:112px;height:68px;object-fit:contain}
+.pw-tile:first-child .pw-face img{filter:invert(1)}
+.pw-face strong{display:flex;justify-content:space-between;align-items:center;border-top:1px solid currentColor;padding-top:8px;font-size:16px;font-weight:550}
+.pw-profile{position:absolute;inset:46px 18px 55px;background:inherit;display:grid;align-content:center;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .16s}
+.pw-profile b{font:normal 23px/1.1 Georgia,serif}
+.pw-profile p{font-size:13px;margin:6px 0}
+.pw-profile a{font-size:12px;justify-self:start;text-underline-offset:3px;pointer-events:auto}
+.pw-tile.on .pw-profile{visibility:visible;opacity:1}
+.pw-tile.on img{visibility:hidden}
+
+.pw-meta{font:11px/1.4 ui-monospace,monospace}
+.pw-face strong{width:100%}
+.pw-profile a{text-decoration:underline}
+.pw-wall :focus-visible{outline:3px solid #578aff;outline-offset:-3px}
+@media(max-width:750px){.pw-wall{grid-template-columns:repeat(2,minmax(0,1fr))}.pw-wall .pw-tile{grid-column:auto;min-height:225px}}
+@media(max-width:500px){.pw-wall{grid-template-columns:1fr}.pw-wall .pw-tile{min-height:195px}}
+@media(prefers-reduced-motion:reduce){.pw-profile{transition:none}}
   </style>
 </head>
 <body>
@@ -313,25 +340,15 @@
         </div>
       </section>
       <section class="campaigns" id="campaigns" aria-labelledby="campaigns-title">
-        <div class="campaign-heading"><h2 id="campaigns-title">A few collaborations.</h2><span>Brands & campaigns</span></div>
-        <div class="campaign-grid">
-          <article class="campaign-card">
-            <div class="campaign-stack"><img class="official-logo" src="../assets/brand-logos/scope.svg" alt="Scope"></div>
-            <h3>Scope × AgentMail</h3><p>Brand collaboration · <a href="https://www.ycombinator.com/companies/scope" target="_blank" rel="noopener">Scope is YC-backed ↗</a></p>
-          </article>
-          <article class="campaign-card">
-            <div class="campaign-stack"><img class="official-logo corgi-logo" src="../assets/brand-logos/corgi.svg" alt="Corgi"></div>
-            <h3>Pancake / Corgi</h3><p>Event collaboration · <a href="https://www.corgi.insure/" target="_blank" rel="noopener">Visit Corgi ↗</a></p>
-          </article>
-          <article class="campaign-card">
-            <div class="campaign-stack"><img class="official-logo" src="../assets/brand-logos/fonzi.png" alt="Fonzi"></div>
-            <h3>fonzi.ai</h3><p>Paid partnership · <a href="https://fonzi.ai/" target="_blank" rel="noopener">Visit Fonzi ↗</a></p>
-          </article>
-          <article class="campaign-card">
-            <div class="campaign-stack"><img class="official-logo agentweb-logo" src="../assets/brand-logos/agentweb.png" alt="AgentWeb"></div>
-            <h3>AgentWeb</h3><p>Verified website actions for AI agents, connected through MCP and APIs.<br><a href="https://agentweb.us/" target="_blank" rel="noopener">Visit AgentWeb ↗</a></p>
-          </article>
-        </div>
+        <div class="campaign-heading"><h2 id="campaigns-title">Selected collaborations</h2><span>Partner index / 01–06</span></div>
+<div class="pw-wall">
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p0"><span class="pw-meta">01 / AI research</span><img src="../assets/brand-logos/distributed.svg" alt=""><strong>Distributed<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p0"><b>Collective intelligence</b><p>Research into how machines can model the intelligence of groups.</p><a href="https://distributed.inc/">Partner profile ↗</a></div></article>
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p1"><span class="pw-meta">02 / Personal AI</span><img src="../assets/brand-logos/sol.svg" alt=""><strong>Sol<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p1"><b>From inbox to action</b><p>Sol picks up commitments from your inbox and prepares work for your approval.</p><a href="https://hellosol.app/">Partner profile ↗</a></div></article>
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p5"><span class="pw-meta">03 / Agent infrastructure</span><img src="../assets/brand-logos/agentweb.png" alt=""><strong>AgentWeb<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p5"><b>Actions for AI agents</b><p>AgentWeb connects agents to verified website actions through MCP and APIs.</p><a href="https://agentweb.us/">Partner profile ↗</a></div></article>
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p2"><span class="pw-meta">04 / Joint campaign</span><img src="../assets/brand-logos/scope.svg" alt=""><strong>Scope × AgentMail<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p2"><b>YC-backed Scope</b><p>A joint creator campaign with Scope and AgentMail.</p><a href="https://www.ycombinator.com/companies/scope">Partner profile ↗</a></div></article>
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p3"><span class="pw-meta">05 / Event collaboration</span><img src="../assets/brand-logos/corgi.svg" alt=""><strong>Pancake / Corgi<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p3"><b>Corgi Insurance</b><p>A community event collaboration with Pancake and Corgi.</p><a href="https://www.corgi.insure/">Partner profile ↗</a></div></article>
+<article class="pw-tile"><button class="pw-face" aria-expanded="false" aria-controls="p4"><span class="pw-meta">06 / Paid partnership</span><img src="../assets/brand-logos/fonzi.png" alt=""><strong>Fonzi.ai<span aria-hidden="true">+</span></strong></button><div class="pw-profile" id="p4"><b>Fonzi.ai</b><p>A paid creator partnership with Fonzi.ai.</p><a href="https://fonzi.ai/">Partner profile ↗</a></div></article>
+</div>
       </section>
       <section class="services" id="services" aria-labelledby="services-heading">
         <div class="service-heading"><span class="eyebrow">01 / Ways to work together</span><h2 id="services-heading">What can I help you with?</h2><p>One focused moment or an ongoing partnership. Start with what your company needs.</p></div>
@@ -428,5 +445,17 @@
     document.getElementById("close-analytics").addEventListener("click", () => analytics.close());
     analytics.addEventListener("click", event => { const rect = analytics.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) analytics.close(); });
   </script>
+<script>
+for(const tile of document.querySelectorAll('.pw-tile')){
+ const button=tile.querySelector('button');
+ const show=open=>{tile.classList.toggle('on',open);button.setAttribute('aria-expanded',String(open));button.querySelector('strong span').textContent=open?'−':'+'};
+ tile.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')show(true)});
+ tile.addEventListener('pointerleave',()=>{if(!tile.contains(document.activeElement))show(false)});
+ button.addEventListener('focus',()=>{if(button.matches(':focus-visible'))show(true)});
+ tile.addEventListener('focusout',e=>{if(!tile.contains(e.relatedTarget))show(false)});
+ button.addEventListener('click',()=>show(!tile.classList.contains('on')));
+ tile.addEventListener('keydown',e=>{if(e.key==='Escape'){button.focus();show(false)}});
+}
+</script>
 </body>
 </html>
