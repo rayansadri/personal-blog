@@ -314,7 +314,35 @@
 @media(max-width:750px){.pw-wall{grid-template-columns:repeat(2,minmax(0,1fr))}.pw-wall .pw-tile{grid-column:auto;min-height:225px}}
 @media(max-width:500px){.pw-wall{grid-template-columns:1fr}.pw-wall .pw-tile{min-height:195px}}
 @media(prefers-reduced-motion:reduce){.pw-profile{transition:none}}
+    /* Editorial service panels share the partner wall's grid and palette. */
+    #services .service-heading{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-bottom:24px}
+    #services .service-heading .eyebrow{grid-column:1/-1;font:11px/1.5 ui-monospace,monospace}
+    #services .service-heading h2{font:400 34px/1.1 Georgia,serif;margin:0}
+    #services .service-heading p{font-size:13px;line-height:1.6;margin:0;max-width:360px;justify-self:end}
+    #services .service-grid{grid-template-columns:1fr 1fr;gap:3px;align-items:stretch}
+    #services .service-card{--panel:#e0e3dc;--text:#20231f;--quiet:#4a5048;background:var(--panel);color:var(--text);border:0;border-radius:0;padding:24px;min-height:260px;position:relative}
+    #services .service-card:nth-child(2){--panel:#e6a1d8;--text:#21151e;--quiet:#51334a}
+    #services .service-card:nth-child(3){--panel:#76b69c;--text:#152720;--quiet:#244b3b}
+    #services .service-card:nth-child(4){--panel:#202222;--text:#fff;--quiet:#c5cbc8}
+    #services .service-title .tag{padding:0;background:none;color:var(--text);font:11px/1.5 ui-monospace,monospace;text-transform:uppercase;gap:8px}
+    #services .service-title .icon{width:16px;height:16px}
+    #services .service-number{display:block;color:var(--quiet);font:11px ui-monospace,monospace}
+    #services .service-card h3{font:400 27px/1.13 Georgia,serif;max-width:300px;margin:24px 0 12px}
+    #services .service-card>p{color:var(--quiet);font-size:13px;line-height:1.6;max-width:390px}
+    #services .service-includes{margin:18px 0}
+    #services .service-includes summary{color:var(--text);font-size:12px;cursor:pointer}
+    #services .service-includes ul{color:var(--quiet);font-size:12px}
+    #services .service-card li::before{color:var(--text)}
+    #services .service-select{border:0;border-top:1px solid currentColor;border-radius:0;background:none;color:var(--text);padding:12px 0 0;min-height:44px;font-size:12px;margin-top:auto}
+    #services .service-select .choice{border:1px solid currentColor;width:22px;height:22px;border-radius:50%;background:none;color:transparent;display:grid;place-items:center}
+    #services .service-select[aria-pressed=true]{background:none;color:var(--text);border-color:currentColor}
+    #services .service-select[aria-pressed=true] .choice{background:var(--text);color:var(--panel)}
+    #services .service-card:has(.service-select[aria-pressed=true]){box-shadow:inset 0 0 0 2px var(--text)}
+    #services :is(button,summary,a):focus-visible{outline:2px solid currentColor;outline-offset:4px}
+    #services .service-footnote{font-size:11px;margin-top:18px}
+    @media(max-width:600px){#services .service-heading{grid-template-columns:1fr;gap:10px}#services .service-heading h2{font-size:29px}#services .service-heading p{justify-self:start}#services .service-grid{grid-template-columns:1fr}#services .service-card{padding:20px;min-height:0}#services .service-card h3{font-size:26px}}
   </style>
+  <link rel="stylesheet" href="editorial.css">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><defs>
@@ -335,7 +363,7 @@
           <div class="creator-signature"><img src="../assets/rayan-portrait-orange-v2.png" alt="Pixel portrait of Rayan Sadri" width="48" height="48"><div><strong>Rayan Sadri</strong><span>Builder. Creator. A little of both.</span></div></div>
           <h1 id="headline">Creator partnerships.<br><span>Built around your product.</span></h1>
           <p class="intro">Get your launch in front of builders. Show what your product can do. Tell a story people want to share. Here’s how I can help.</p>
-          <div class="hero-actions"><a class="arrow-cta" href="#services"><span class="arrow"><svg class="icon"><use href="#arrow-up-right"/></svg></span>Explore services</a><a class="text-link" href="https://calendly.com/rynsdri/30min" target="_blank" rel="noopener">Talk through an idea ↗</a></div>
+          <div class="hero-actions"><a class="arrow-cta" href="#services"><span class="arrow"><svg class="icon"><use href="#arrow-up-right"/></svg></span>Explore services</a><a class="text-link rates-link" href="https://unfair.so/@rayansadri" target="_blank" rel="noopener noreferrer" aria-label="View partnership rates on Unfair (opens in a new tab)">View rates ↗</a><a class="text-link" href="https://calendly.com/rynsdri/30min" target="_blank" rel="noopener">Talk through an idea ↗</a></div>
           <p class="hero-note"><span class="dot"></span> Open to select brand partnerships</p>
         </div>
       </section>
