@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 34" width="88" height="34" role="img" aria-label="plek">
+  <g transform="translate(0 4) scale(0.40625)" fill="none" stroke-width="10" stroke-linecap="butt">
+    <path d="M4 22 H14 M30 22 H60" stroke="#2A2A2A"/>
+    <path d="M4 42 H34 M50 42 H60" stroke="#2A2A2A"/>
+    <path d="M22 4 V34 M22 50 V60" stroke="#2A2A2A"/>
+    <path d="M42 4 V14 M42 30 V60" stroke="#3c7eb3"/>
+  </g>
+  <text x="39" y="24.5" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="500" letter-spacing="-0.4" fill="#2A2A2A">plek</text>
+</svg>
